@@ -29,9 +29,20 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^w' autosuggest-execute
 bindkey '^e' autosuggest-accept
 bindkey '^u' autosuggest-toggle
-bindkey '^L' vi-forward-word
 bindkey '^k' up-line-or-search
 bindkey '^j' down-line-or-search
+
+# clear screen with '^L' like in bash
+function clear-screen-and-scrollback() {
+  builtin echoti civis >"$TTY"
+  builtin print -rn -- $'\e[H\e[2J' >"$TTY"
+  builtin zle .reset-prompt
+  builtin zle -R
+  builtin print -rn -- $'\e[3J' >"$TTY"
+  builtin echoti cnorm >"$TTY"
+}
+zle -N clear-screen-and-scrollback
+bindkey '^L' clear-screen-and-scrollback
 
 
 eval "$(starship init zsh)"
