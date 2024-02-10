@@ -14,11 +14,24 @@ disabled = true
 [git_status]
 disabled = true
 
+[c]
+format = '[ $version](blue)'
+
 [golang]
-format = '[ $version](bold cyan)'
+format = "[ $version](bold cyan)"
 
 [rust]
-format = "[🦀 $version](red bold)"
+format = "[ $version](bold red)"
+
+[lua]
+format = "[](bold blue)"
+
+[python]
+format = "[ $version](bright-green)"
+
+[nodejs]
+format = "[ $version](bold green)"
+
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"

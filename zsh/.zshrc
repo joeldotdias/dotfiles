@@ -12,7 +12,7 @@ unsetopt beep
 
 export LANG=en_US.UTF-8
 
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH:/usr/local/go/bin
 
 # make nvim the default editor
 export EDITOR=/snap/bin/nvim
@@ -49,8 +49,8 @@ eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship.toml
 
 # aliases
-alias conf='cd ~/.config/'
+alias conf="cd ~/.dotfiles/"
 alias batow="cd /mnt/d"
 alias vim="/snap/bin/nvim"
-alias rusty="cd dev/hello-rust/ && tmux new -s rusty"
+alias rusty="cd ~/dev/hello-rust/ && tmux new -s rusty"
 alias aoc="cd ~/dev/advent-of-rust-23/ && tmux new -s aoc"
