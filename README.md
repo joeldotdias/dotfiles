@@ -9,8 +9,8 @@ In case anyone decides on using this config, you'll need the following installed
 - tpm (Tmux Plugin Manager)
 - A patched nerd font (I use HackNerdFont)
 
-<br>
-Symlinks in case you put this in a `~/.dotfiles` dir
+
+<br>Symlinks in case you put this in a `~/.dotfiles` dir
 <br>
 <code>
 ln -s ~/.dotfiles/nvim ~/.config/nvim <br>
