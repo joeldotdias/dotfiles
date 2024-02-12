@@ -63,6 +63,8 @@ local plugins = {
 		}
 	},
 
+	"nvim-pack/nvim-spectre",
+
 	{
 		"mrcjkb/rustaceanvim",
 		version = "^3",
