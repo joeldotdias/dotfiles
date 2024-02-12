@@ -14,9 +14,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- Trouble
 vim.keymap.set("n", "<leader>fk", function() require("trouble").toggle() end)
 
--- cmdline
-vim.keymap.set('n', '<CR>', '<cmd>FineCmdline<CR>', {noremap = true})
-
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 

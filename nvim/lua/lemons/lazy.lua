@@ -64,11 +64,6 @@ local plugins = {
 	},
 
 	{
-		"VonHeikemen/fine-cmdline.nvim",
-		dependencies = { "MunifTanjim/nui.nvim" }
-	},
-
-	{
 		"mrcjkb/rustaceanvim",
 		version = "^3",
 		ft = { "rust" }
@@ -84,8 +79,7 @@ local plugins = {
 		dependencies = { "nvim-tree/nvim-web-devicons" }
 	},
 
-	"ThePrimeagen/vim-be-good",
-    { dir = "/home/jdlemon/plugins/ilref.nvim" }
+	"ThePrimeagen/vim-be-good"
 }
 
 require("lazy").setup(plugins, {})

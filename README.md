@@ -11,10 +11,9 @@ In case anyone decides on using this config, you'll need the following installed
 
 
 <br>Symlinks in case you put this in a `~/.dotfiles` dir
-<br>
-<code>
-ln -s ~/.dotfiles/nvim ~/.config/nvim <br>
-ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf <br>
-ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc <br>
-ln -s ~/.dotfiles/starship/starship.toml ~/.config/starship.toml <br>
-</code>
+```
+ln -s ~/.dotfiles/nvim ~/.config/nvim
+ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
+ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/starship/starship.toml ~/.config/starship.toml
+```
