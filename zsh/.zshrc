@@ -12,7 +12,7 @@ unsetopt beep
 
 export LANG=en_US.UTF-8
 
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH:/usr/local/go/bin
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH:/usr/local/go/bin:/snap/bin:$HOME/go/bin
 
 # make nvim the default editor
 export EDITOR=/snap/bin/nvim
@@ -24,9 +24,10 @@ autoload bashcompinit && bashcompinit
 autoload -Uz compinit
 compinit
 
+
 # key bindings for autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-bindkey '^w' autosuggest-execute
+bindkey '^f' autosuggest-execute
 bindkey '^e' autosuggest-accept
 bindkey '^u' autosuggest-toggle
 bindkey '^k' up-line-or-search
@@ -48,9 +49,15 @@ bindkey '^L' clear-screen-and-scrollback
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship.toml
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# --cmd cd removes the need to alias cd to z
+eval "$(zoxide init --cmd cd zsh)"
+
 # aliases
 alias conf="cd ~/.dotfiles/"
 alias batow="cd /mnt/d"
-alias vim="/snap/bin/nvim"
+alias vim="nvim"
 alias rusty="cd ~/dev/hello-rust/ && tmux new -s rusty"
 alias aoc="cd ~/dev/advent-of-rust-23/ && tmux new -s aoc"
+# alias cd="z"

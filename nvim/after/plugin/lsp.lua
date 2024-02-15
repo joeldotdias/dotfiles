@@ -1,18 +1,20 @@
+local lsp = require("lspconfig")
+
+
+
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
-local lsp_zero = require("lsp-zero")
-
 require("mason").setup({})
 require("mason-lspconfig").setup({
-  ensure_installed = { "tsserver", "rust_analyzer", "gopls" },
+  ensure_installed = { "rust_analyzer", "gopls", "tsserver", "pyright" },
   handlers = {
-    lsp_zero.default_setup,
+    lsp.default_setup,
     lua_ls = function()
-      local lua_opts = lsp_zero.nvim_lua_ls()
+      local lua_opts = lsp.nvim_lua_ls()
       require("lspconfig").lua_ls.setup(lua_opts)
-    end,
+    end
   },
 })
 
@@ -52,7 +54,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
   vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 

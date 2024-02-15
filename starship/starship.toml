@@ -1,12 +1,15 @@
 add_newline = false
+command_timeout = 1050
+
+palette = "catppuccin_mocha"
+
 # A minimal left prompt
 format = """$directory$character"""
-palette = "catppuccin_mocha"
 # move the rest of the prompt to the right
 right_format = """$all"""
 
-
-command_timeout = 1050
+[character]
+success_symbol = "[❯](#66f55b)"
 
 [package]
 disabled = true
@@ -14,23 +17,26 @@ disabled = true
 [git_status]
 disabled = true
 
+[git_branch]
+format = "on [$symbol$branch ](lavender)"
+
 [c]
-format = '[ $version](blue)'
+format = "[ $version ](blue)"
 
 [golang]
-format = "[ $version](bold cyan)"
+format = "[ $version ](bold cyan)"
 
 [rust]
-format = "[ $version](bold red)"
+format = "[ $version ](bold red)"
 
 [lua]
-format = "[](bold blue)"
+format = "[ ](bold blue)"
 
 [python]
-format = "[ $version](bright-green)"
+format = "[ $version ](bright-green)"
 
 [nodejs]
-format = "[ $version](bold green)"
+format = "[ $version ](bold green)"
 
 
 [palettes.catppuccin_mocha]
