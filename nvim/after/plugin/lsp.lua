@@ -1,14 +1,10 @@
-local lsp = require("lspconfig")
-
-
-
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-  ensure_installed = { "rust_analyzer", "gopls", "tsserver", "pyright" },
+  ensure_installed = { "rust_analyzer", "gopls", "tsserver", "pyright", "clangd" },
   handlers = {
     lsp.default_setup,
     lua_ls = function()

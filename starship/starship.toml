@@ -24,19 +24,24 @@ format = "on [$symbol$branch ](lavender)"
 format = "[ $version ](blue)"
 
 [golang]
-format = "[ $version ](bold cyan)"
+symbol = ""
+format = "[$symbol $version ](bold cyan)"
 
 [rust]
-format = "[ $version ](bold red)"
+symbol = ""
+format = "[$symbol $version ](bold red)"
 
 [lua]
-format = "[ ](bold blue)"
+symbol = ""
+format = "[$symbol $version](bold blue)"
 
 [python]
-format = "[ $version ](bright-green)"
+symbol = ""
+format = "[$symbol $version ](bright-green)"
 
 [nodejs]
-format = "[ $version ](bold green)"
+symbol = ""
+format = "[$symbol $version ](bold green)"
 
 
 [palettes.catppuccin_mocha]

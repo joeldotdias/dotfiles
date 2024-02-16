@@ -12,8 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 
-vim.g.mapleader = ' '
-
 local plugins = {
 	{
 		"nvim-telescope/telescope.nvim", tag = "0.1.5",
@@ -31,59 +29,52 @@ local plugins = {
 		name = "rose-pine",
 	},
 
-	-- -- LSP
-	-- "neovim/nvim-lspconfig",
-	-- "williamboman/mason.nvim",
-	-- "williamboman/mason-lspconfig.nvim",
-
-	-- -- Autocompletion
-	-- "hrsh7th/nvim-cmp",
-	-- "hrsh7th/cmp-buffer",
-	-- "hrsh7th/cmp-path",
-	-- "saadparwaiz1/cmp_luasnip",
-	-- "hrsh7th/cmp-nvim-lsp",
-	-- "hrsh7th/cmp-nvim-lua",
-
-	-- -- Snippets
-	-- "L3MON4D3/LuaSnip",
-	-- "rafamadriz/friendly-snippets",
-
-    {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-        dependencies = { "nvim-lua/plenary.nvim" }
-    },
-
-	"mbbill/undotree",
-	"tpope/vim-fugitive",
-	"ThePrimeagen/git-worktree.nvim",
-	"folke/zen-mode.nvim",
-	"tpope/vim-commentary",
-
+	-- LSP
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
 		dependencies = {
 			-- LSP Support
-			{ "neovim/nvim-lspconfig" },
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
+			"neovim/nvim-lspconfig",
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
 
 			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-buffer" },
-			{ "hrsh7th/cmp-path" },
-			{ "saadparwaiz1/cmp_luasnip" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-nvim-lua" },
+			"hrsh7th/nvim-cmp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
+			"saadparwaiz1/cmp_luasnip",
 
 			-- Snippets
-			{ "L3MON4D3/LuaSnip" },
-			{ "rafamadriz/friendly-snippets" },
+			"L3MON4D3/LuaSnip",
+			"rafamadriz/friendly-snippets",
 		}
 	},
 
+	-- Debugging
+	"mfussenegger/nvim-dap",
+	"rcarriga/nvim-dap-ui",
+	"theHamsta/nvim-dap-virtual-text",
+	"nvim-telescope/telescope-dap.nvim",
+
+	"leoluz/nvim-dap-go",
+
+	-- Git
+	"tpope/vim-fugitive",
+	"ThePrimeagen/git-worktree.nvim",
+	
+	"mbbill/undotree",
+	"tpope/vim-commentary",
 	"nvim-pack/nvim-spectre",
+	"folke/zen-mode.nvim",
+
+	{
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
 
 	{
 		"mrcjkb/rustaceanvim",
