@@ -5,9 +5,9 @@ A somewhat minimal config based mostly off ThePrimeagen and Omerxx, with a decen
 It won't make your terminal look too good but your grandma will think you're cool
 
 In case anyone decides on using this config, you'll need the following installed:
-- ripgrep
-- tpm (Tmux Plugin Manager)
-- A patched nerd font (I use HackNerdFont)
+- [ripgrep](https://github.com/BurntSushi/ripgrep)
+- [tpm](https://github.com/tmux-plugins/tpm) (Tmux Plugin Manager)
+- A [patched nerd font](https://www.nerdfonts.com/font-downloads) (I use HackNerdFont)
 
 
 <br>Symlinks in case you put this in a `~/.dotfiles` dir
