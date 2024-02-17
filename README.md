@@ -8,7 +8,10 @@ In case anyone decides on using this config, you'll need the following installed
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [tpm](https://github.com/tmux-plugins/tpm) (Tmux Plugin Manager)
 - A [patched nerd font](https://www.nerdfonts.com/font-downloads) (I use HackNerdFont)
+<<<<<<< HEAD
 - [zoxide](https://github.com/ajeetdsouza/zoxide)
+=======
+>>>>>>> 245dd5b6540a2ea8b3ed53cd559ebb51f1b31196
 
 
 <br>Symlinks in case you put this in a `~/.dotfiles` dir
