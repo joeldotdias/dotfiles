@@ -27,7 +27,7 @@ compinit
 
 # key bindings for autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-bindkey '^f' autosuggest-execute
+bindkey '^w' autosuggest-execute
 bindkey '^e' autosuggest-accept
 bindkey '^u' autosuggest-toggle
 bindkey '^k' up-line-or-search
