@@ -12,7 +12,7 @@ unsetopt beep
 
 export LANG=en_US.UTF-8
 
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH:/usr/local/go/bin:/snap/bin:$HOME/go/bin
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH:/usr/local/go/bin:/snap/bin:$HOME/go/bin:$HOME/bin/scripts
 
 # make nvim the default editor
 export EDITOR=/snap/bin/nvim
@@ -27,7 +27,7 @@ compinit
 
 # key bindings for autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-bindkey '^w' autosuggest-execute
+bindkey '^f' autosuggest-execute
 bindkey '^e' autosuggest-accept
 bindkey '^u' autosuggest-toggle
 bindkey '^k' up-line-or-search
@@ -60,4 +60,6 @@ alias batow="cd /mnt/d"
 alias vim="nvim"
 alias rusty="cd ~/dev/hello-rust/ && tmux new -s rusty"
 alias aoc="cd ~/dev/advent-of-rust-23/ && tmux new -s aoc"
+alias prime="prime.sh"
+alias revim="revim.sh"
 # alias cd="z"

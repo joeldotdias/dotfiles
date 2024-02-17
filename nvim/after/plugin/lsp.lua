@@ -4,7 +4,15 @@ lsp.preset("recommended")
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-  ensure_installed = { "rust_analyzer", "gopls", "tsserver", "pyright", "clangd" },
+  ensure_installed = { 
+      "rust_analyzer", 
+      "gopls", 
+      "tsserver", 
+      "pyright", 
+      "clangd",
+      "emmet_language_server",
+      "tailwindcss"
+  },
   handlers = {
     lsp.default_setup,
     lua_ls = function()
