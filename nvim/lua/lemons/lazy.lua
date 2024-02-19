@@ -21,10 +21,7 @@ local plugins = {
 		dependencies = { "nvim-lua/plenary.nvim" }
 	},
 
-	{
-		"nvim-treesitter/nvim-treesitter",
-		-- build = ":TSUpdate"
-	},
+	"nvim-treesitter/nvim-treesitter",
 	"nvim-treesitter/playground",
 
 	{
@@ -61,7 +58,6 @@ local plugins = {
 	"rcarriga/nvim-dap-ui",
 	"theHamsta/nvim-dap-virtual-text",
 	"nvim-telescope/telescope-dap.nvim",
-
 	"leoluz/nvim-dap-go",
 
 	-- Git

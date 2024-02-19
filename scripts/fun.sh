@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+file=$1
+
+funcs=$(grep 'fn\|fun\|func' $file | awk '{$1=$1;print}' | tr -d '{')
+selected=`printf "$funcs" | fzf`
+
+sed -n "/$selected/,/}/p" $file
