@@ -60,9 +60,11 @@ alias batow="cd /mnt/d"
 alias vim="nvim"
 alias rusty="cd ~/dev/hello-rust/ && tmux new -s rusty"
 alias aoc="cd ~/dev/advent-of-rust-23/ && tmux new -s aoc"
+alias snake="python3"
 
 # stupid unnecessary aliases coz I just need to add the .sh extension
 alias prime="prime.sh"
 alias revim="revim.sh"
 alias winc="winc.sh"
 alias fun="fun.sh"
+alias desnap="desnap.sh"

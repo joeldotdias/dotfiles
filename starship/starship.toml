@@ -14,6 +14,9 @@ success_symbol = "[❯](#66f55b)"
 [package]
 disabled = true
 
+[cmd_duration]
+disabled = true 
+
 [git_status]
 disabled = true
 
@@ -21,7 +24,8 @@ disabled = true
 format = "on [$symbol$branch ](lavender)"
 
 [c]
-format = "[ $version ](blue)"
+symbol = ""
+format = "[$symbol $version ](blue)"
 
 [golang]
 symbol = ""
@@ -30,6 +34,10 @@ format = "[$symbol $version ](bold cyan)"
 [rust]
 symbol = ""
 format = "[$symbol $version ](bold red)"
+
+[kotlin]
+symbol = ""
+format = "[$symbol $version ](bold blue)"
 
 [lua]
 symbol = ""
