@@ -11,8 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.mapleader = ' '
-
 
 local plugins = {
 	{
@@ -72,6 +70,19 @@ local plugins = {
 		"mrcjkb/rustaceanvim",
 		version = "^3",
 		ft = { "rust" }
+	},
+
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = {
+			"MarkdownPreviewToggle",
+			"MarkdownPreview",
+			"MarkdownPreviewStop"
+		},
+		ft = { "markdown" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
 	},
 
 	{

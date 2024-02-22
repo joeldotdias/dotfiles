@@ -1,3 +1,3 @@
-require("lemons.lazy")
-require("lemons.remap")
 require("lemons.set")
+require("lemons.remap")
+require("lemons.lazy")
