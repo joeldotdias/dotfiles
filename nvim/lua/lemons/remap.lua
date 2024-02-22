@@ -23,9 +23,6 @@ vim.keymap.set("n", "<leader>bl", ":lua require'dap'.set_breakpoint(nil, nil, vi
 vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl_open()<CR>")
 vim.keymap.set("n", "<leader>dg", ":lua require'dap-go'.debug_test()<CR>")
 
--- Trouble
-vim.keymap.set("n", "<leader>fk", function() require("trouble").toggle() end)
-
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
@@ -47,8 +44,8 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
+vim.keymap.set("n", "<leader>gf", "<cmd>CellularAutomaton game_of_life<CR>");
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")

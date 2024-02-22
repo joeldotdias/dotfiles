@@ -1,4 +1,6 @@
-require("trouble").setup({
+local trouble = require("trouble")
+
+trouble.setup({
     auto_fold = false,
     fold_open = " ",
     fold_closed = " ",
@@ -15,3 +17,15 @@ require("trouble").setup({
     severity = nil, -- nil (ALL) or vim.diagnostic.severity.ERROR | WARN | INFO | HINT
     use_diagnostic_signs = true,
 })
+
+vim.keymap.set("n", "<leader>fk", function()
+    trouble.toggle()
+end)
+
+vim.keymap.set("n", "[t", function()
+    trouble.next({skip_groups = true, jump = true});
+end)
+
+vim.keymap.set("n", "]t", function()
+    trouble.previous({skip_groups = true, jump = true});
+end)

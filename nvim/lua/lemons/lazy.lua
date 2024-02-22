@@ -84,7 +84,9 @@ local plugins = {
 		dependencies = { "nvim-tree/nvim-web-devicons" }
 	},
 
-	"ThePrimeagen/vim-be-good"
+	-- fun
+	"ThePrimeagen/vim-be-good",
+	"eandrju/cellular-automaton.nvim"
 }
 
 require("lazy").setup(plugins, {})
