@@ -53,6 +53,7 @@ local plugins = {
 
 	-- Git
 	"tpope/vim-fugitive",
+	"lewis6991/gitsigns.nvim",
 	"ThePrimeagen/git-worktree.nvim",
 	
 	"mbbill/undotree",
@@ -68,7 +69,7 @@ local plugins = {
 
 	{
 		"mrcjkb/rustaceanvim",
-		version = "^3",
+		version = "^4",
 		ft = { "rust" }
 	},
 

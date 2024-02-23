@@ -29,3 +29,7 @@ end)
 vim.keymap.set("n", "]t", function()
     trouble.previous({skip_groups = true, jump = true});
 end)
+
+vim.keymap.set("n", "<leader>qf", "<cmd>TroubleToggle quickfix<cr>",
+  {silent = true, noremap = true}
+)
