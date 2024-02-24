@@ -1,35 +1,35 @@
-local trouble = require("trouble")
+-- local trouble = require("trouble")
 
-trouble.setup({
-    auto_fold = false,
-    fold_open = " ",
-    fold_closed = " ",
-    height = 6,
-    indent_str = " ┊   ",
-    include_declaration = {
-        "lsp_references",
-        "lsp_implementations",
-        "lsp_definitions"
-    },
-    multiline = true,
-    padding = false,
-    position = "bottom",
-    severity = nil, -- nil (ALL) or vim.diagnostic.severity.ERROR | WARN | INFO | HINT
-    use_diagnostic_signs = true,
-})
+-- trouble.setup({
+--     auto_fold = false,
+--     fold_open = " ",
+--     fold_closed = " ",
+--     height = 6,
+--     indent_str = " ┊   ",
+--     include_declaration = {
+--         "lsp_references",
+--         "lsp_implementations",
+--         "lsp_definitions"
+--     },
+--     multiline = true,
+--     padding = false,
+--     position = "bottom",
+--     severity = nil, -- nil (ALL) or vim.diagnostic.severity.ERROR | WARN | INFO | HINT
+--     use_diagnostic_signs = true,
+-- })
 
-vim.keymap.set("n", "<leader>fk", function()
-    trouble.toggle()
-end)
+-- vim.keymap.set("n", "<leader>fk", function()
+--     trouble.toggle()
+-- end)
 
-vim.keymap.set("n", "[t", function()
-    trouble.next({skip_groups = true, jump = true});
-end)
+-- vim.keymap.set("n", "[t", function()
+--     trouble.next({skip_groups = true, jump = true});
+-- end)
 
-vim.keymap.set("n", "]t", function()
-    trouble.previous({skip_groups = true, jump = true});
-end)
+-- vim.keymap.set("n", "]t", function()
+--     trouble.previous({skip_groups = true, jump = true});
+-- end)
 
-vim.keymap.set("n", "<leader>qf", "<cmd>TroubleToggle quickfix<cr>",
-  {silent = true, noremap = true}
-)
+-- vim.keymap.set("n", "<leader>qf", "<cmd>TroubleToggle quickfix<cr>",
+--   {silent = true, noremap = true}
+-- )

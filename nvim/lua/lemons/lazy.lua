@@ -19,7 +19,10 @@ local plugins = {
 		dependencies = { "nvim-lua/plenary.nvim" }
 	},
 
-	"nvim-treesitter/nvim-treesitter",
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate"
+	},
 	"nvim-treesitter/playground",
 
 	{
@@ -45,11 +48,16 @@ local plugins = {
 	"saadparwaiz1/cmp_luasnip",
 
 	-- Debugging
-	"mfussenegger/nvim-dap",
-	"rcarriga/nvim-dap-ui",
-	"theHamsta/nvim-dap-virtual-text",
-	"nvim-telescope/telescope-dap.nvim",
-	"leoluz/nvim-dap-go",
+	-- "mfussenegger/nvim-dap",
+	-- "rcarriga/nvim-dap-ui",
+	-- "theHamsta/nvim-dap-virtual-text",
+	-- "nvim-telescope/telescope-dap.nvim",
+	-- "leoluz/nvim-dap-go",
+	-- {
+	-- 	"mrcjkb/rustaceanvim",
+	-- 	version = "^4",
+	-- 	ft = { "rust" }
+	-- },
 
 	-- Git
 	"tpope/vim-fugitive",
@@ -57,7 +65,7 @@ local plugins = {
 	"ThePrimeagen/git-worktree.nvim",
 	
 	"mbbill/undotree",
-	"tpope/vim-commentary",
+	"numToStr/Comment.nvim",
 	"nvim-pack/nvim-spectre",
 	"folke/zen-mode.nvim",
 
@@ -66,12 +74,6 @@ local plugins = {
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" }
     },
-
-	{
-		"mrcjkb/rustaceanvim",
-		version = "^4",
-		ft = { "rust" }
-	},
 
 	{
 		"iamcco/markdown-preview.nvim",
@@ -101,4 +103,9 @@ local plugins = {
 	"eandrju/cellular-automaton.nvim"
 }
 
-require("lazy").setup(plugins, {})
+-- require("lazy").setup(plugins, {})
+
+require("lazy").setup({
+	spec = "lemons.plugins",
+	change_detection = { notify = false }
+})
