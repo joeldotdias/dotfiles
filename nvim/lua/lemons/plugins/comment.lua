@@ -15,16 +15,3 @@ return {
         })
     end
 }
-
-
--- require("Comment").setup ({
---     opleader = {
---         line = "cl",
---         block = "cb"
---     },
-
---     mappings= {
---         basic = true,
---         extra = true
---     }
--- })
