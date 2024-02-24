@@ -1,4 +1,4 @@
 return {
     "ThePrimeagen/vim-be-good",
-	"eandrju/cellular-automaton.nvim"
+    "eandrju/cellular-automaton.nvim"
 }
