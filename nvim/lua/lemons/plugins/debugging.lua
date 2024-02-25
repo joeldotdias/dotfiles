@@ -44,7 +44,7 @@ return {
         end
     },
 
-    -- Specific language adapters
+    -- Individual language adapters
     {
         "leoluz/nvim-dap-go",
         config = function()
@@ -56,5 +56,5 @@ return {
         "mrcjkb/rustaceanvim",
         version = "^4",
         ft = { "rust" }
-    },
+    }
 }

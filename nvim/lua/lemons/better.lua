@@ -10,6 +10,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         })
         if vim.fn.has("wsl") == 1 then
             vim.fn.system("clip.exe", vim.fn.getreg('"'))
+        end
     end
 })
 
