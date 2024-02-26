@@ -13,7 +13,6 @@ return {
         -- Snippets
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
-        "rafamadriz/friendly-snippets"
     },
 
     config = function()
@@ -45,13 +44,22 @@ return {
                 "pyright",
                 "clangd",
                 "emmet_language_server",
-                "tailwindcss",
-                "lua_ls"
+                "tailwindcss"
             },
 
             handlers = {
                 function(server_name)
                     lsp[server_name].setup({})
+                end,
+
+                ["tsserver"] = function()
+                    lsp.tsserver.setup({
+                        settings = {
+                            implicitProjectConfiguration = {
+                                checkJs = true
+                            }
+                        }
+                    })
                 end
             }
         })
@@ -85,6 +93,7 @@ return {
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
+            }, {
                 { name = "buffer" }
             })
         })
