@@ -1,8 +1,9 @@
 alias conf="cd ~/.dotfiles/"
 alias batow="cd /mnt/d"
+alias vi="/usr/bin/vim"
 alias vim="nvim"
-alias rusty="cd ~/dev/hello-rust/ && tmux new -s rusty"
-alias aoc="cd ~/dev/advent-of-rust-23/ && tmux new -s aoc"
+alias rusty="cd ~/sw/hello-rust/ && tmux new -s rusty"
+alias aoc="cd ~/sw/advent-of-rust-23/ && tmux new -s aoc"
 alias python="python3"
 alias snake="python3"
 

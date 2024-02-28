@@ -12,7 +12,7 @@ return {
 
         -- Snippets
         "L3MON4D3/LuaSnip",
-        "saadparwaiz1/cmp_luasnip",
+        "saadparwaiz1/cmp_luasnip"
     },
 
     config = function()
@@ -22,20 +22,29 @@ return {
             desc = "LSP actions",
             callback = function(event)
                 local opts = { buffer = event.buf }
-                vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-                vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-                vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-                vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-                vim.keymap.set("n", "<leader>vws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", opts)
-                vim.keymap.set("n", "<leader>vca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-                vim.keymap.set("n", "<leader>vrr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-                vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-                vim.keymap.set("i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-                vim.keymap.set({ "n", "x" }, "<leader>fm", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
+                vim.keymap.set("n", "D", function() vim.lsp.buf.hover() end, opts)
+                vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+                vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, opts)
+                vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
+                vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, opts)
+                vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+                vim.keymap.set("n", "<leader>br", function() vim.lsp.buf.references() end, opts)
+                vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
+                vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+                vim.keymap.set({ "n", "x" }, "<leader>fm", function() vim.lsp.buf.format({ async = true }) end, opts)
             end
         })
 
-        require("mason").setup({})
+        require("mason").setup({
+            ui = {
+                icons = {
+                    package_installed = "✓",
+                    package_pending = "◍",
+                    package_uninstalled = "✗"
+                }
+            }
+        })
+
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "rust_analyzer",
@@ -111,8 +120,8 @@ return {
             }
         })
 
-        vim.keymap.set("n", "<leader>vd", "<cmd>lua vim.diagnostic.open_float()<CR>")
-        vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-        vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+        vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end)
+        vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end)
+        vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end)
     end
 }

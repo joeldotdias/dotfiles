@@ -4,7 +4,7 @@ return {
         dependencies = {
             "rcarriga/nvim-dap-ui",
             "theHamsta/nvim-dap-virtual-text",
-            "nvim-telescope/telescope-dap.nvim",
+            "nvim-telescope/telescope-dap.nvim"
         },
 
         config = function()
@@ -31,20 +31,18 @@ return {
                 dapui.close()
             end
 
-            vim.keymap.set("n", "<leader>dc", ":lua require'dap'.continue()<CR>")
-            vim.keymap.set("n", "<F10>", ":lua require'dap'.step_over()<CR>")
-            vim.keymap.set("n", "<F11>", ":lua require'dap'.step_into()<CR>")
-            vim.keymap.set("n", "<F12>", ":lua require'dap'.step_out()<CR>")
-            vim.keymap.set("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
-            vim.keymap.set("n", "<leader>bc", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
-            vim.keymap.set("n", "<leader>bl", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
-            vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl_open()<CR>")
-            vim.keymap.set("n", "<leader>dg", ":lua require'dap-go'.debug_test()<CR>")
-
+            vim.keymap.set("n", "<leader>dc", function() dap.continue() end)
+            vim.keymap.set("n", "<F10>", function() dao.step_over() end)
+            vim.keymap.set("n", "<F11>", function() dap.step_into() end)
+            vim.keymap.set("n", "<F12>", function() dap.step_out() end)
+            vim.keymap.set("n", "<leader>b", function() dap.toggle_breakpoint() end)
+            vim.keymap.set("n", "<leader>bc", function() dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")) end)
+            vim.keymap.set("n", "<leader>bl", function() dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: ")) end)
+            vim.keymap.set("n", "<leader>dr", function() dap.repl_open() end)
+            vim.keymap.set("n", "<leader>dg", function() require("dap-go").debug_test() end)
         end
     },
 
-    -- Individual language adapters
     {
         "leoluz/nvim-dap-go",
         config = function()

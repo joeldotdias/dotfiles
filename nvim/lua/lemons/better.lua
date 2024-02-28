@@ -1,4 +1,3 @@
-
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
     desc = "Workaround for wsl clipboard non sense",
@@ -22,11 +21,11 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-	group = vim.api.nvim_create_augroup("EditText", { clear = true }),
-	desc = "Enable spell check for some files",
+    group = vim.api.nvim_create_augroup("EditText", { clear = true }),
+    desc = "Enable spell check for some files",
     pattern = { "gitcommit", "markdown", "txt" },
     
     callback = function()
-		vim.opt_local.spell = true
-	end
+        vim.opt_local.spell = true
+    end
 })

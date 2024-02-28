@@ -8,14 +8,16 @@ return {
                 change = { text = '~' },
                 delete = { text = '_' },
                 topdelete = { text = '‾' },
-                changedelete = { text = '~' },
+                changedelete = { text = '~' }
             },
             signcolumn = false,
             
             on_attach = function(bufnr)
-                vim.keymap.set("n", "<leader>gl", ":Gitsigns toggle_signs<CR>", {})
-                vim.keymap.set("n", "<leader>gh", ":Gitsigns preview_hunk<CR>", {})
-                vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", {})
+                local gitsigns = package.loaded.gitsigns
+                
+                vim.keymap.set("n", "<leader>gl", gitsigns.toggle_signs, {})
+                vim.keymap.set("n", "<leader>gh", gitsigns.preview_hunk, {})
+                vim.keymap.set("n", "<leader>gb", gitsigns.toggle_current_line_blame, {})
             end
         }
     end

@@ -24,7 +24,5 @@ return {
                 extra = true
             }
         })
-
-        vim.keymap.set("n", "<leader>tcl", "<leader>gcc")
     end
 }

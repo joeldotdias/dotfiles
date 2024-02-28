@@ -11,11 +11,17 @@ setopt EXTENDED_HISTORY
 unsetopt beep
 
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+
+# in case of problems with locale
+# sudo locale-gen en_US en_US.UTF-8
+# sudo dpkg-reconfigure locales
 
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH:/usr/local/go/bin:/snap/bin:$HOME/go/bin:$HOME/bin/scripts
 
 # make nvim the default editor
-export EDITOR=/snap/bin/nvim
+export EDITOR=/usr/bin/nvim
 
 # autocomplete
 setopt prompt_subst
