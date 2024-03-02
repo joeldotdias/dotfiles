@@ -17,6 +17,13 @@ return {
 
     config = function()
         local lsp = require("lspconfig")
+        local cmp_lsp = require("cmp_nvim_lsp")
+        local capabilities = vim.tbl_deep_extend(
+            "force",
+            {},
+            vim.lsp.protocol.make_client_capabilities(),
+            cmp_lsp.default_capabilities()
+        )
 
         vim.api.nvim_create_autocmd("LspAttach", {
             desc = "LSP actions",
@@ -40,7 +47,7 @@ return {
                 icons = {
                     package_installed = "✓",
                     package_pending = "◍",
-                    package_uninstalled = "✗"
+                    package_uninstalled = "◍"
                 }
             }
         })
@@ -58,7 +65,9 @@ return {
 
             handlers = {
                 function(server_name)
-                    lsp[server_name].setup({})
+                    lsp[server_name].setup({
+                        capabilities = capabilities
+                    })
                 end,
 
                 ["tsserver"] = function()
@@ -67,7 +76,8 @@ return {
                             implicitProjectConfiguration = {
                                 checkJs = true
                             }
-                        }
+                        },
+                        capabilities = capabilities
                     })
                 end
             }
@@ -75,17 +85,13 @@ return {
 
 
         local cmp = require("cmp")
+        local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
         cmp.setup({
             snippet = {
                 expand = function(args)
                     require("luasnip").lsp_expand(args.body)
                 end
-            },
-
-            window = {
-                completion = cmp.config.window.bordered(),
-                documentation = cmp.config.window.bordered()
             },
 
             mapping = cmp.mapping.preset.insert({

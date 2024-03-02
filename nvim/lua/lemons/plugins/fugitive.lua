@@ -3,7 +3,12 @@ return {
 
     config = function()
         vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
-        vim.api.nvim_set_keymap("n", "<leader>gc", ":Git commit -m \"", { noremap=false })
-        vim.api.nvim_set_keymap("n", "<leader>gp", ":Git push -u origin HEAD<CR>", { noremap=false })
+        
+        local opts = { noremap = false }
+        
+        vim.keymap.set("n", "<leader>gc", ":Git commit -m \"", opts)
+        vim.keymap.set("n", "<leader>p", function() vim.cmd.Git("push") end, opts)
+        vim.keymap.set("n", "<leader>po", ":Git push -u origin ", opts);
+        vim.keymap.set("n", "<leader>gp", ":Git push -u origin HEAD<CR>", opts)
     end
 }
