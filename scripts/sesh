@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+sessions=$(tmux ls | awk '{print $1;}' | tr -d ':')
+
+selected=`printf "$sessions" | fzf`
+
+tmux a -t $selected

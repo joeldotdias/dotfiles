@@ -18,6 +18,8 @@ export LC_CTYPE=en_US.UTF-8
 # sudo locale-gen en_US en_US.UTF-8
 # sudo dpkg-reconfigure locales
 
+[[ ! -r /home/jdlemon/.opam/opam-init/init.zsh ]] || source /home/jdlemon/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH:/usr/local/go/bin:/snap/bin:$HOME/go/bin:$HOME/bin/scripts
 
 # make nvim the default editor

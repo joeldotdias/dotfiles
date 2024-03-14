@@ -6,13 +6,18 @@ return {
 
         -- Autocompletion
         "hrsh7th/nvim-cmp",
+        "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
-        "hrsh7th/cmp-nvim-lsp",
 
         -- Snippets
         "L3MON4D3/LuaSnip",
-        "saadparwaiz1/cmp_luasnip"
+        "saadparwaiz1/cmp_luasnip",
+
+        {
+            "windwp/nvim-autopairs",
+            event = "InsertEnter",
+        }
     },
 
     config = function()
@@ -29,7 +34,7 @@ return {
             desc = "LSP actions",
             callback = function(event)
                 local opts = { buffer = event.buf }
-                vim.keymap.set("n", "D", function() vim.lsp.buf.hover() end, opts)
+                vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
                 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
                 vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, opts)
                 vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
@@ -41,6 +46,7 @@ return {
                 vim.keymap.set({ "n", "x" }, "<leader>fm", function() vim.lsp.buf.format({ async = true }) end, opts)
             end
         })
+        
 
         require("mason").setup({
             ui = {
@@ -70,6 +76,10 @@ return {
                     })
                 end,
 
+                lsp.ocamllsp.setup({
+                    capabilities = capabilities
+                }),
+
                 ["tsserver"] = function()
                     lsp.tsserver.setup({
                         settings = {
@@ -79,6 +89,12 @@ return {
                         },
                         capabilities = capabilities
                     })
+                end,
+
+                ["tailwindcss"] = function()
+                    lsp.tailwindcss.setup({
+                        filetypes = { "javascriptreact", "typescriptreact", "svelte", "css" }
+                    })
                 end
             }
         })
@@ -86,6 +102,12 @@ return {
 
         local cmp = require("cmp")
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
+        local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+        cmp.event:on(
+            "confirm_done",
+            cmp_autopairs.on_confirm_done()
+        )
 
         cmp.setup({
             snippet = {
@@ -111,6 +133,10 @@ return {
             }, {
                 { name = "buffer" }
             })
+        })
+
+        require("nvim-autopairs").setup({
+            disable_filetype = { "rust", "go", "c" }
         })
 
 

@@ -20,7 +20,12 @@ disabled = true
 [git_status]
 disabled = true
 
+# Life's too short to be coding in Java
+[java]
+disabled = true
+
 [git_branch]
+symbol = " "
 format = "on [$symbol$branch ](lavender)"
 
 [c]
@@ -39,6 +44,10 @@ format = "[$symbol $version ](bold red)"
 symbol = ""
 format = "[$symbol $version ](bold blue)"
 
+[ocaml]
+format = "[$symbol $version ]($style)"
+# format = "[$symbol ($version )(\\($switch_indicator$switch_name\\) )]($style)"
+
 [lua]
 symbol = ""
 format = "[$symbol $version](bold blue)"
@@ -51,6 +60,8 @@ format = "[$symbol $version ](bright-green)"
 symbol = ""
 format = "[$symbol $version ](bold green)"
 
+[gradle]
+disabled = true
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"

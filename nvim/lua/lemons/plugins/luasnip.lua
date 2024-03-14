@@ -3,12 +3,12 @@ return {
     -- follow latest release.
     version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     build = "make install_jsregexp",
-    
+
     config = function()
         local ls = require("luasnip")
         local types = require("luasnip.util.types")
         local snippets = require("lemons.snippets")
-        
+
         ls.filetype_extend("javascript", { "jsdoc" })
 
         ls.setup({
@@ -23,7 +23,7 @@ return {
             ls.add_snippets(lang, snips)
         end
 
-        
+
         local snip_modes = { "i", "s" }
         local opts = { silent = true }
 
@@ -33,13 +33,13 @@ return {
             end
         end, opts)
 
-        vim.keymap.set(snip_modes, "<C-a>", function()
+        vim.keymap.set(snip_modes, "<C-p>", function()
             if ls.jumpable(-1) then
                 ls.jump(-1)
             end
         end, opts)
 
-        vim.keymap.set(snip_modes, "<C-m>", function()
+        vim.keymap.set(snip_modes, "<C-n>", function()
             if ls.jumpable(1) then
                 ls.jump(1)
             end

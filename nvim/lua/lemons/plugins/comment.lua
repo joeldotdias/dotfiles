@@ -1,6 +1,7 @@
 return {
    "numToStr/Comment.nvim",
-   
+    event = "BufRead",
+
    config = function()
         require("Comment").setup ({
             toggler = {
@@ -13,7 +14,7 @@ return {
                 below = "cco",
                 eol = "cca"
             },
-            
+
             opleader = {
                 line = "cl",
                 block = "cb"
