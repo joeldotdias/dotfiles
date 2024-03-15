@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 languages=`echo "rust go c cpp typescript javascript nodejs python lua" | tr ' ' '\n'`
 
