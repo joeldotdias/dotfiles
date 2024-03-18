@@ -23,7 +23,7 @@ export LC_CTYPE=en_US.UTF-8
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH:/usr/local/go/bin:/snap/bin:$HOME/go/bin:$HOME/bin/scripts
 
 # make nvim the default editor
-export EDITOR=/usr/bin/nvim
+export EDITOR=nvim
 
 # autocomplete
 setopt prompt_subst
@@ -32,6 +32,7 @@ autoload bashcompinit && bashcompinit
 autoload -Uz compinit
 compinit
 
+export TERM=screen-256color
 
 # key bindings for autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

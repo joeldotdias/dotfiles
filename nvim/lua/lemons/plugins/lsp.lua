@@ -52,7 +52,7 @@ return {
             ui = {
                 icons = {
                     package_installed = "✓",
-                    package_pending = "◍",
+                    package_pending = "➜",
                     package_uninstalled = "◍"
                 }
             }
@@ -63,8 +63,9 @@ return {
                 "rust_analyzer",
                 "gopls",
                 "tsserver",
-                "pyright",
                 "clangd",
+                "lua_ls",
+                "pyright",
                 "emmet_language_server",
                 "tailwindcss"
             },
@@ -91,9 +92,25 @@ return {
                     })
                 end,
 
+                ["lua_ls"] = function()
+                    lsp.lua_ls.setup({
+                        capabilities = capabilities,
+                        settings = {
+                            Lua = {
+                                diagnostics = {
+                                    globals = { "vim", "it", "describe", "before_each", "after_each" },
+                                },
+                                workspace = {
+                                    checkThirdParty = false
+                                }
+                            }
+                        }
+                    })
+                end,
+
                 ["tailwindcss"] = function()
                     lsp.tailwindcss.setup({
-                        filetypes = { "javascriptreact", "typescriptreact", "svelte", "css" }
+                        filetypes = { "javascriptreact", "typescriptreact", "svelte", "css", "html" }
                     })
                 end
             }
