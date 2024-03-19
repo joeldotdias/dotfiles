@@ -1,9 +1,10 @@
-function ColorMyPencils(color)
-    color = color or "rose-pine-moon"
-    vim.cmd.colorscheme(color)
+function ColorMyPencils(mode)
+    vim.cmd.colorscheme("rose-pine-moon")
 
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none"})
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none"})
+    if mode ~= "zen" then
+        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    end
 end
 
 return {
@@ -13,12 +14,10 @@ return {
     priority = 1000,
 
     config = function()
-        require("rose-pine").setup({
-            disable_background = true
-        })
-
+        require("rose-pine").setup()
         ColorMyPencils()
     end
+
     -- "folke/tokyonight.nvim",
     -- lazy = false,
     -- priority = 1000,

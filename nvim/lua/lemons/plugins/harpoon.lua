@@ -15,7 +15,7 @@ return {
         vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
 
         for i = 1, 5 do
-            navkey = string.format("<leader>%s", i)
+            local navkey = string.format("<leader>%s", i)
             vim.keymap.set("n", navkey, function() harpoon:list():select(i) end)
         end
     end

@@ -120,12 +120,6 @@ return {
         local cmp = require("cmp")
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-        local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-        cmp.event:on(
-            "confirm_done",
-            cmp_autopairs.on_confirm_done()
-        )
-
         cmp.setup({
             snippet = {
                 expand = function(args)
@@ -151,10 +145,16 @@ return {
                 { name = "buffer" }
             })
         })
+        
 
         require("nvim-autopairs").setup({
             disable_filetype = { "rust", "go", "c" }
         })
+        local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+        cmp.event:on(
+            "confirm_done",
+            cmp_autopairs.on_confirm_done()
+        )
 
 
         vim.diagnostic.config({

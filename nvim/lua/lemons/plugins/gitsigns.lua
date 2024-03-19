@@ -3,7 +3,7 @@ return {
     event = "BufRead",
 
     config = function()
-        require("gitsigns").setup {
+        require("gitsigns").setup({
             signs = {
                 add = { text = '+' },
                 change = { text = '~' },
@@ -21,6 +21,6 @@ return {
                 vim.keymap.set("n", "<leader>gb", gitsigns.toggle_current_line_blame, {})
                 vim.keymap.set("n", "<leader>gdf", gitsigns.diffthis, {})
             end
-        }
+        })
     end
 }

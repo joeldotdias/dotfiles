@@ -6,7 +6,6 @@ return {
 
     config = function()
         local ls = require("luasnip")
-        local types = require("luasnip.util.types")
         local snippets = require("lemons.snippets")
 
         ls.filetype_extend("javascript", { "jsdoc" })
@@ -19,7 +18,7 @@ return {
         })
 
         for i = 1, #snippets, 1 do
-            lang, snips = snippets[i][1], snippets[i][2]
+            local lang, snips = snippets[i][1], snippets[i][2]
             ls.add_snippets(lang, snips)
         end
 

@@ -12,11 +12,19 @@ return {
                         number = true,
                         relativenumber = true
                     }
-                }
+                },
+
+                on_open = function (win)
+                    ColorMyPencils("zen")
+                end,
+
+                on_close = function (win)
+                   ColorMyPencils()
+                end
             })
             zen_mode.toggle()
             vim.wo.wrap = false
-            ColorMyPencils()
+            -- ColorMyPencils("zen")
         end)
     end
 }

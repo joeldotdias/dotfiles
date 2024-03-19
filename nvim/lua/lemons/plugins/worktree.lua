@@ -9,5 +9,5 @@ return {
 
         vim.keymap.set("n", "<leader>wt", function() telescope.extensions.git_worktree.git_worktrees() end, silent)
         vim.keymap.set("n", "<leader>cwt", function() telescope.extensions.git_worktree.create_git_worktree() end, silent)
-    end 
+    end
 }

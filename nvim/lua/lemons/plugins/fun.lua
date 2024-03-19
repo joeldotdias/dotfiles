@@ -22,7 +22,7 @@ return {
                 end
             }
 
-            cellular_automaton.register_animation{
+            cellular_automaton.register_animation {
                 fps = 30,
                 name = "scramble",
 
