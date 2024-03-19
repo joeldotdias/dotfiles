@@ -46,7 +46,7 @@ return {
                 vim.keymap.set({ "n", "x" }, "<leader>fm", function() vim.lsp.buf.format({ async = true }) end, opts)
             end
         })
-        
+
 
         require("mason").setup({
             ui = {
@@ -92,27 +92,24 @@ return {
                     })
                 end,
 
-                ["lua_ls"] = function()
-                    lsp.lua_ls.setup({
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                diagnostics = {
-                                    globals = { "vim", "it", "describe", "before_each", "after_each" },
-                                },
-                                workspace = {
-                                    checkThirdParty = false
-                                }
+                lsp.lua_ls.setup({
+                    capabilities = capabilities,
+                    settings = {
+                        Lua = {
+                            diagnostics = {
+                                globals = { "vim", "it", "describe", "before_each", "after_each" },
+                            },
+                            workspace = {
+                                checkThirdParty = false
                             }
                         }
-                    })
-                end,
+                    }
+                }),
 
-                ["tailwindcss"] = function()
-                    lsp.tailwindcss.setup({
-                        filetypes = { "javascriptreact", "typescriptreact", "svelte", "css", "html" }
-                    })
-                end
+                lsp.tailwindcss.setup({
+                    filetypes = { "javascriptreact", "typescriptreact", "svelte", "css", "html" },
+                    root_dir = lsp.util.root_pattern("tailwindconfig.js"),
+                })
             }
         })
 
@@ -145,7 +142,7 @@ return {
                 { name = "buffer" }
             })
         })
-        
+
 
         require("nvim-autopairs").setup({
             disable_filetype = { "rust", "go", "c" }
