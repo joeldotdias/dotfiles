@@ -3,7 +3,7 @@ return {
     -- follow latest release.
     version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     build = "make install_jsregexp",
-
+    
     config = function()
         local ls = require("luasnip")
         local snippets = require("lemons.snippets")

@@ -1,6 +1,7 @@
 return {
     "nvim-pack/nvim-spectre",
-
+    event = "BufReadPost",
+    
     config = function()
         local spectre = require("spectre")
 

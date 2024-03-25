@@ -1,9 +1,17 @@
 alias conf="cd ~/.dotfiles/"
+
 alias batow="cd /mnt/d"
+
+alias nice="nice.sh"
+
 alias vi="/usr/bin/vim"
 alias vim="nvim"
+
 alias rusty="cd ~/sw/hello-rust/ && tmux new -s rusty"
+alias crust="cd ~/sw/crust-of-rust && tmux new -s crust"
+alias lings="cd ~/sw/hello-rust/rustlings && tmux new -s lings"
 alias aoc="cd ~/sw/advent-of-rust-23/ && tmux new -s aoc"
+
 alias python="python3"
 alias snake="python3"
 

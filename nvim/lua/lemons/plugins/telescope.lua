@@ -16,6 +16,7 @@ return {
         "nvim-telescope/telescope-ui-select.nvim",
         "nvim-tree/nvim-web-devicons"
     },
+    cmd = "Telescope",
 
     config = function()
         local telescope = require("telescope")

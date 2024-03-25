@@ -4,7 +4,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         "L3MON4D3/LuaSnip"
     },
-    event = "BufEnter",
+    event = "BufReadPost",
 
     config = function()
         local neogen = require("neogen")

@@ -1,5 +1,6 @@
 return {
     "folke/zen-mode.nvim",
+    event = "VeryLazy",
 
     config = function()
         local zen_mode = require("zen-mode")
