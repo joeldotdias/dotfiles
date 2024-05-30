@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+nvim_dir=~/.local/share/nvim
+
+if [ -d "$nvim_dir" ]; then
+    echo "Clearing Neovim..."
+    rm -rf "$nvim_dir"
+else
+    echo "$nvim_dir does not exist"
+fi
+
+# Open nvim to reload everything
+nvim .

@@ -1,0 +1,1 @@
+/home/jdlemon/projects/lace-lang/tree-sitter-lace/queries/highlights.scm

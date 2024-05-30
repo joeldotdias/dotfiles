@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+function load_nvim() {
+    local nvim_prev="/usr/local/share/nvim"
+    local nvim_fallback="$HOME/.local/share/nvim"
+
+    # use dev version unless stable is sent as arg
+    local branch="${1:-"master"}"
+
+    git checkout "$branch"
+    git pull origin --rebase
+
+    sudo rm -rf "$nvim_prev"
+    sudo rm -rf "$nvim_fallback"
+    sudo make distclean
+
+    make CMAKE_BUILD_TYPE=RelWithDebInfo
+    sudo make install
+}
+
+nvim_dir="$HOME/tools/neovim"
+
+if [ ! -d "$nvim_dir" ]; then
+    echo "==============Getting Neovim=============="
+    mkdir -p "$nvim_dir"
+    git clone https://github.com/neovim/neovim "$nvim_dir"
+fi
+
+(cd "$nvim_dir" || return; load_nvim "$1")
+
+nvim .

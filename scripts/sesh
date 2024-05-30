@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if tmux ls; then
+	sessions=$(tmux ls | awk '{print $1;}' | tr -d ':')
+
+	selected=$(printf "%s" "$sessions" | fzf)
+	tmux a -t "$selected"
+fi
