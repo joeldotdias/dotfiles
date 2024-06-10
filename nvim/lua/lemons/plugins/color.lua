@@ -1,7 +1,5 @@
-function ColorMyPencils(color, mode)
-    color = color or "rose-pine-moon"
-
-    vim.cmd.colorscheme(color)
+function ColorMyPencils(mode)
+    vim.cmd.colorscheme("rose-pine-moon")
 
     if mode ~= "zen" then
         vim.api.nvim_set_hl(0, "Normal", { bg = "none" })

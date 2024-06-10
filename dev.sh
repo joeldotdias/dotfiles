@@ -124,6 +124,12 @@ function get_langs() {
 	)
 	cargo install stylua && cargo install selene
 
+	getting "gleam"
+	local gleam_version
+	gleam_version=$(get_version "gleam-lang/gleam" "v")
+	curl -LO "https://github.com/gleam-lang/gleam/releases/latest/download/gleam-v${gleam_version}-x86_64-unknown-linux-musl.tar.gz"
+	sudo install tar xf "gleam-v${gleam_version}-x86_64-unknown-linux-musl.tar.gz" gleam
+
 	getting "node"
 	local nvm_version
 	nvm_version=$(get_version "nvm-sh/nvm" "v")
@@ -132,6 +138,12 @@ function get_langs() {
 	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 	nvm install 20
+
+	getting "erlang"
+	wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb
+	sudo dpkg -i erlang-solutions_2.0_all.deb
+	sudo apt-get update
+	sudo apt-get install esl-erlang
 }
 
 function setup_git() {

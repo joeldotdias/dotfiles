@@ -1,5 +1,6 @@
 return {
     "ThePrimeagen/git-worktree.nvim",
+    event = { "VimEnter" },
 
     config = function()
         require("git-worktree").setup()
