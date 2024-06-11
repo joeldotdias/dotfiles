@@ -1,9 +1,9 @@
 return {
-    -- {
-    --     "folke/lazydev.nvim",
-    --     ft = "lua",
-    --     opts = {},
-    -- },
+    {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {},
+    },
     {
         "neovim/nvim-lspconfig",
         dependencies = {
@@ -106,7 +106,8 @@ return {
                 --         },
                 --     },
                 -- },
-                ruff = {},
+                -- ruff = {},
+                pyright = {},
                 lua_ls = {
                     settings = {
                         Lua = {
@@ -155,7 +156,7 @@ return {
                         json = {
                             schemas = require("schemastore").json.schemas(),
                             validate = { enable = true },
-                            format = { enable = true },
+                            -- format = { enable = true },
                         },
                     },
                 },
