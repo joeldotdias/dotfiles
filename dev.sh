@@ -186,7 +186,6 @@ function make_symlinks() {
 	ln -s ~/.dotfiles/nvim ~/.config/nvim
 	ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
 	ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
-	ln -s ~/.dotfiles/zsh/.zsh_aliases ~/.zsh_aliases
 	ln -s ~/.dotfiles/starship/starship.toml ~/.config/starship.toml
 	ln -s ~/.dotfiles/scripts ~/bin/scripts
 }
