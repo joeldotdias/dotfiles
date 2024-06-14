@@ -5,6 +5,8 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
+setxkbmap -option "caps:escape"
+
 # get rid of the stupid beep
 unsetopt beep
 
