@@ -5,7 +5,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
-setxkbmap -option "caps:escape"
+export XDG_CONFIG_HOME=$HOME/.config/
 
 # get rid of the stupid beep
 unsetopt beep
@@ -68,9 +68,10 @@ CORE_PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin
 CARGO_PATH=$HOME/.cargo/bin
 GO_PATH=$HOME/go/bin:/usr/local/go/bin
 ZIG_PATH=$HOME/.zig
+BUN_PATH=$HOME/.bun/bin
 PROJ_PATH=$HOME/bin/scripts:$HOME/bin/projects
 
-export PATH=$PATH:$CORE_PATH:$CARGO_PATH:$GO_PATH:$ZIG_PATH:$PROJ_PATH
+export PATH=$PATH:$CORE_PATH:$CARGO_PATH:$GO_PATH:$ZIG_PATH:$BUN_PATH:$PROJ_PATH
 
 # starship
 eval "$(starship init zsh)"
@@ -106,3 +107,10 @@ alias lings="(cd ~/learn/rust/hello-rust/rustlings; tmux new -s lings)"
 alias aoc="(cd ~/learn/aoc/advent-of-rust-23/; tmux new -s aoc)"
 
 alias python="python3"
+
+# bun completions
+[ -s "/home/joeldotdias/.bun/_bun" ] && source "/home/joeldotdias/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -15,8 +15,11 @@ return {
         priority = 1000,
 
         config = function()
-            ---@diagnostic disable-next-line: missing-parameter
-            require("rose-pine").setup()
+            require("rose-pine").setup({
+                styles = {
+                    bold = false
+                }
+            })
             ColorMyPencils()
         end,
     },

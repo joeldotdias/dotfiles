@@ -1,15 +1,13 @@
 configuration{
-    modi: "run,window,combi";
-    icon-theme: "Oranchelo";
+    modi: "run,window,drun";
+    icon-theme: "Papirus";
     show-icons: true;
     terminal: "alacritty";
     drun-display-format: "{icon} {name}";
-    location: 0;
-    disable-history: false;
-    hide-scrollbar: true;
-    display-combi: " 🖥️  All ";
-    display-run: " 🏃  Run ";
-    display-window: " 🪟  Window";
+    display-run: "Run: ";
+    display-window: "Windows: ";
+    display-drun: "Applications: ";
+    font: "JetBrainsMono Nerd Font Medium 10";
     sidebar-mode: true;
 }
 
