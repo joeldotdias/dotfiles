@@ -69,6 +69,8 @@ CARGO_PATH=$HOME/.cargo/bin
 GO_PATH=$HOME/go/bin:/usr/local/go/bin
 ZIG_PATH=$HOME/.zig
 BUN_PATH=$HOME/.bun/bin
+export BUN_INSTALL="$HOME/.bun"
+BUN_PATH="$BUN_INSTALL/bin"
 PROJ_PATH=$HOME/bin/scripts:$HOME/bin/projects
 
 export PATH=$PATH:$CORE_PATH:$CARGO_PATH:$GO_PATH:$ZIG_PATH:$BUN_PATH:$PROJ_PATH
@@ -85,13 +87,15 @@ export STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(zoxide init --cmd cd zsh)"
 
 # ocaml
-# [[ ! -r /home/jdlemon/.opam/opam-init/init.zsh ]] || source /home/jdlemon/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 [[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh"  > /dev/null 2> /dev/null
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# bun completions
+[ -s "/home/joeldotdias/.bun/_bun" ] && source "/home/joeldotdias/.bun/_bun"
 
 #aliases
 alias conf="cd ~/.dotfiles/"
@@ -107,10 +111,3 @@ alias lings="(cd ~/learn/rust/hello-rust/rustlings; tmux new -s lings)"
 alias aoc="(cd ~/learn/aoc/advent-of-rust-23/; tmux new -s aoc)"
 
 alias python="python3"
-
-# bun completions
-[ -s "/home/joeldotdias/.bun/_bun" ] && source "/home/joeldotdias/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"

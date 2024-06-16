@@ -24,8 +24,9 @@ return {
                 "vimdoc",
                 "query",
                 "sql",
-                "yaml",
+                "hyprlang",
                 "toml",
+                "yaml",
                 "json",
             },
 
