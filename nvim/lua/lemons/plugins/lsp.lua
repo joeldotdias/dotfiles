@@ -17,8 +17,6 @@ return {
         },
 
         config = function()
-            -- require("neodev").setup()
-
             local lsp = require("lspconfig")
 
             -- merge native LSP capabilities with the ones provided by nvim_cmp
@@ -71,7 +69,16 @@ return {
 
             -- {} --> use the default config
             local servers = {
-                rust_analyzer = {},
+                rust_analyzer = {
+                    procMacro = {
+                        ignored = {
+                            leptos_macro = {
+                                "server",
+                                "component",
+                            },
+                        },
+                    },
+                },
                 gopls = {},
                 ocamllsp = {
                     manual_install = true,
@@ -134,9 +141,13 @@ return {
                         },
                     },
                 },
-                emmet_language_server = {},
+                emmet_language_server = {
+                    filetypes = { "html", "javascriptreact", "typescriptreact", "templ" },
+                },
                 templ = {},
                 html = {},
+                htmx = {},
+                cssls = {},
                 tailwindcss = {
                     root_dir = lsp.util.root_pattern("tailwind.config.js", "tailwind.config.ts"),
                 },
@@ -172,7 +183,9 @@ return {
             end, vim.tbl_keys(servers))
 
             local formatters = {
+                "shfmt",
                 "prettier",
+                "stylua",
                 "black",
             }
 

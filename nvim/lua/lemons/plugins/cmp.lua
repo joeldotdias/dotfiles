@@ -39,6 +39,10 @@ return {
                 end,
             },
 
+            formatting = {
+                format = require("nvim-highlight-colors").format,
+            },
+
             window = {
                 completion = {
                     border = "rounded",

@@ -14,6 +14,8 @@ return {
                 "lua",
                 "bash",
                 "templ",
+                "zig",
+                "gleam",
                 "typescript",
                 "tsx",
                 "jsdoc",

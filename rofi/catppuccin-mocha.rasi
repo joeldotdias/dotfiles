@@ -1,5 +1,5 @@
 * {
-    bg-col:  #1e1e2e;
+    bg-col:  rgba(11, 11, 11, 0.7);
     bg-col-light: #1e1e2e;
     border-col: #1e1e2e;
     selected-col: #1e1e2e;
@@ -21,6 +21,7 @@ window {
     border: 3px;
     border-color: @border-col;
     background-color: @bg-col;
+    border-radius: 10px;
 }
 
 mainbox {

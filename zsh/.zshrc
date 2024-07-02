@@ -7,6 +7,9 @@ export LC_CTYPE=en_US.UTF-8
 
 export XDG_CONFIG_HOME=$HOME/.config/
 
+export QT_QPA_PLATFORM=wayland
+export XDG_CURRENT_DESKTOP=Hyprland
+
 # get rid of the stupid beep
 unsetopt beep
 

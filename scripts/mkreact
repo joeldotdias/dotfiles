@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+ask() {
+	local response=""
+	read -r -p "Install $1 (y/n) " response </dev/tty
+	if [[ $response != "y" ]]; then
+		return 1
+	fi
+}
+
+install_pkg() {
+	npm install "$2" "$1" || echo "Error installing $1"
+}
+
+get_tailwind() {
+	local tailwind=(
+		tailwindcss
+		postcss
+		autoprefixer
+		prettier-plugin-tailwindcss
+	)
+	local flag="-D"
+	for pkg in "${tailwind[@]}"; do
+		install_pkg "$pkg" "$flag"
+	done
+
+	npx tailwindcss init -p
+}
+
+get_extra() {
+	local extra=(
+		class-variance-authority
+		tailwind-merge
+	)
+	for pkg in "${extra[@]}"; do
+		install_pkg "$pkg"
+	done
+}
+
+npm create-vite@latest "$1" -- --template "${2:-"react-ts"}"
+
+ask "tailwind" && get_tailwind
+ask "extra" && get_extra

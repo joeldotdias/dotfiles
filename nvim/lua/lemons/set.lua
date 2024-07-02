@@ -24,11 +24,16 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
+-- sync os and vim clipboards
+vim.o.clipboard = "unnamedplus"
+
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+
+vim.g.skip_ts_context_commentstring_module = true
 
 ---@diagnostic disable-next-line: duplicate-set-field
 vim.deprecate = function() end
