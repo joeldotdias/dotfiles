@@ -26,7 +26,7 @@ SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt APPEND_HISTORY
 setopt SHARE_HISTORY
-setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_DUPS
 setopt HIST_SAVE_NO_DUPS
@@ -112,5 +112,17 @@ alias rusty="(cd ~/learn/rust/hello-rust; tmux new -s rusty)"
 alias crust="(cd ~/learn/rust/crust-of-rust; tmux new -s crust)"
 alias lings="(cd ~/learn/rust/hello-rust/rustlings; tmux new -s lings)"
 alias aoc="(cd ~/learn/aoc/advent-of-rust-23/; tmux new -s aoc)"
+alias zed="zeditor"
 
 alias python="python3"
+
+# pnpm
+export PNPM_HOME="/home/joeldotdias/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# Turso
+export PATH="$PATH:/home/joeldotdias/.turso"

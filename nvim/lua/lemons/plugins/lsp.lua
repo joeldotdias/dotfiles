@@ -106,15 +106,26 @@ return {
                     },
                 },
                 bashls = {},
-                -- basedpyright = {
-                --     settings = {
-                --         basedpyright = {
-                --             typeCheckingMode = "standard",
-                --         },
-                --     },
-                -- },
-                -- ruff = {},
-                pyright = {},
+                basedpyright = {
+                    settings = {
+                        basedpyright = {
+                            -- typeCheckingMode = "standard",
+                            disableOrganizeImports = true,
+                            disableTaggedHints = false,
+                            analysis = {
+                                typeCheckingMode = "standard",
+                                useLibraryCodeForTypes = true, -- Analyze library code for type information
+                                autoImportCompletions = true,
+                                autoSearchPaths = true,
+                                diagnosticSeverityOverrides = {
+                                    reportIgnoreCommentWithoutRule = true,
+                                },
+                            },
+                        },
+                    },
+                },
+                ruff = {},
+                -- pyright = {},
                 lua_ls = {
                     settings = {
                         Lua = {
@@ -186,7 +197,7 @@ return {
                 "shfmt",
                 "prettier",
                 "stylua",
-                "black",
+                -- "black",
             }
 
             require("mason-tool-installer").setup({

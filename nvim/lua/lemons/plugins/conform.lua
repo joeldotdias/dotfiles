@@ -16,7 +16,8 @@ return {
                 javascript = { "prettier" },
                 typescriptreact = { "prettier" },
                 javascriptreact = { "prettier" },
-                python = { "black" },
+                -- python = { "black" },
+                python = { "ruff_fix", "ruff_format" },
             },
         })
 

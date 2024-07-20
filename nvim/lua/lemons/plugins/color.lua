@@ -8,21 +8,6 @@ function ColorMyPencils(mode)
 end
 
 return {
-    -- {
-    --     "rose-pine/neovim",
-    --     name = "rose-pine",
-    --     lazy = false,
-    --     priority = 900,
-    --
-    --     config = function()
-    --         require("rose-pine").setup({
-    --             styles = {
-    --                 bold = false,
-    --             },
-    --         })
-    --         -- ColorMyPencils()
-    --     end,
-    -- },
     {
         "folke/tokyonight.nvim",
         lazy = false,
@@ -35,6 +20,9 @@ return {
                     comments = { italic = true },
                     sidebars = "transparent",
                 },
+                on_colors = function(colors)
+                    colors.warning = "#FF5F1F"
+                end,
                 on_highlights = function(highlights, colors)
                     highlights.LineNr = {
                         fg = colors.cyan,
@@ -63,4 +51,20 @@ return {
             })
         end,
     },
+
+    -- {
+    --     "rose-pine/neovim",
+    --     name = "rose-pine",
+    --     lazy = false,
+    --     priority = 900,
+    --
+    --     config = function()
+    --         require("rose-pine").setup({
+    --             styles = {
+    --                 bold = false,
+    --             },
+    --         })
+    --         -- ColorMyPencils()
+    --     end,
+    -- },
 }

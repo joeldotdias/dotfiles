@@ -15,7 +15,7 @@ return {
                 c = { bg = colors.bg_statusline, fg = colors.fg_sidebar },
             },
             insert = {
-                a = { bg = "#57e140", fg = colors.black },
+                a = { bg = "#5fc77b", fg = colors.black },
                 b = { bg = colors.fg_gutter, fg = "#08ff08" },
             },
             command = {
