@@ -20,12 +20,13 @@ export EDITOR=nvim
 export GIT_EDITOR=nvim
 
 # keep previous commands in history
+setopt NO_EXTENDED_HISTORY
+setopt NO_SHARE_HISTORY
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt APPEND_HISTORY
-setopt SHARE_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_DUPS
@@ -52,6 +53,11 @@ bindkey '^e' autosuggest-accept
 bindkey '^u' autosuggest-toggle
 bindkey '^k' up-line-or-search
 bindkey '^j' down-line-or-search
+
+# curr_wm=$(wmctrl -m | head -n 1 | awk '{print $2}')
+# if [[ $curr_wm  == "i3" ]]; then
+#     setxkbmap -option caps:escape
+# end
 
 # clear screen with '^L' like in bash
 function clear-screen-and-scrollback() {
@@ -113,6 +119,7 @@ alias crust="(cd ~/learn/rust/crust-of-rust; tmux new -s crust)"
 alias lings="(cd ~/learn/rust/hello-rust/rustlings; tmux new -s lings)"
 alias aoc="(cd ~/learn/aoc/advent-of-rust-23/; tmux new -s aoc)"
 alias zed="zeditor"
+alias ij="$HOME/.local/share/JetBrains/Toolbox/apps/intellij-idea-community-edition/bin/idea.sh"
 
 alias python="python3"
 

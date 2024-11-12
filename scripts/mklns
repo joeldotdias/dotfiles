@@ -19,7 +19,6 @@ function symln() {
 
 declare -a dots=("alacritty" "bgs" "i3" "neofetch" "nvim" "picom" "polybar" "rofi")
 
-for conf in "${dots[@]}"
-do
+for conf in "${dots[@]}"; do
     symln "$conf"
 done

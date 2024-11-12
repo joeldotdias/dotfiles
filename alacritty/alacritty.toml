@@ -1,13 +1,8 @@
-import = [
-    # "~/.config/alacritty/rose-pine-moon.toml"
-    "~/.config/alacritty/catppuccin-mocha.toml"
-]
-
 [env]
 TERM = "xterm-256color"
 
 [window]
-opacity = 0.7
+opacity = 0.8
 
 [window.padding]
 x = 2
@@ -27,3 +22,8 @@ style = "Bold"
 [font.italic]
 family = "Fira Code"
 style = "Italic"
+
+[general]
+import = [
+    "~/.config/alacritty/catppuccin-mocha.toml"
+]

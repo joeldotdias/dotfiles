@@ -90,10 +90,10 @@ return {
                     },
                 },
                 zls = {},
-                tsserver = {
+                ts_ls = {
                     settings = {
                         implicitProjectConfiguration = {
-                            -- checkJs = true, -- for jsdoc
+                            checkJs = true, -- for jsdoc
                         },
                         completions = {
                             completeFunctionCalls = true,
@@ -106,26 +106,26 @@ return {
                     },
                 },
                 bashls = {},
-                basedpyright = {
-                    settings = {
-                        basedpyright = {
-                            -- typeCheckingMode = "standard",
-                            disableOrganizeImports = true,
-                            disableTaggedHints = false,
-                            analysis = {
-                                typeCheckingMode = "standard",
-                                useLibraryCodeForTypes = true, -- Analyze library code for type information
-                                autoImportCompletions = true,
-                                autoSearchPaths = true,
-                                diagnosticSeverityOverrides = {
-                                    reportIgnoreCommentWithoutRule = true,
-                                },
-                            },
-                        },
-                    },
-                },
-                ruff = {},
-                -- pyright = {},
+                -- basedpyright = {
+                --     settings = {
+                --         basedpyright = {
+                --             -- typeCheckingMode = "standard",
+                --             disableOrganizeImports = true,
+                --             disableTaggedHints = false,
+                --             analysis = {
+                --                 typeCheckingMode = "standard",
+                --                 useLibraryCodeForTypes = true, -- Analyze library code for type information
+                --                 autoImportCompletions = true,
+                --                 autoSearchPaths = true,
+                --                 diagnosticSeverityOverrides = {
+                --                     reportIgnoreCommentWithoutRule = true,
+                --                 },
+                --             },
+                --         },
+                --     },
+                -- },
+                -- ruff = {},
+                pyright = {},
                 lua_ls = {
                     settings = {
                         Lua = {
@@ -161,6 +161,16 @@ return {
                 cssls = {},
                 tailwindcss = {
                     root_dir = lsp.util.root_pattern("tailwind.config.js", "tailwind.config.ts"),
+                    settings = {
+                        tailwindCSS = {
+                            experimental = {
+                                classRegex = {
+                                    { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                                    { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                                },
+                            },
+                        },
+                    },
                 },
                 yamlls = {
                     settings = {
