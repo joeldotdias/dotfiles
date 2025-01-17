@@ -14,18 +14,26 @@ return {
 
             -- Schema info
             "b0o/SchemaStore.nvim",
+
+            -- completions
+            "saghen/blink.cmp",
+
+            -- {
+            --     "tjdevries/ocaml.nvim",
+            --     build = "make",
+            -- },
         },
 
         config = function()
             local lsp = require("lspconfig")
 
             -- merge native LSP capabilities with the ones provided by nvim_cmp
-            local capabilities = vim.tbl_deep_extend(
+            --[[ local capabilities = vim.tbl_deep_extend(
                 "force",
                 {},
                 vim.lsp.protocol.make_client_capabilities(),
                 require("cmp_nvim_lsp").default_capabilities()
-            )
+            ) ]]
 
             local Lemonade = vim.api.nvim_create_augroup("Lemonade", { clear = true })
 
@@ -80,13 +88,21 @@ return {
                     },
                 },
                 gopls = {},
+                -- ocamllsp = {
+                --     manual_install = true,
+                --     cmd = { "dune", "tools", "exec", "ocamllsp" },
+                --     filetypes = {
+                --         "ocaml",
+                --         "ocaml.interface",
+                --         "ocaml.menhir",
+                --         "ocaml.cram",
+                --     },
+                -- },
                 ocamllsp = {
                     manual_install = true,
+                    -- cmd = { "dune", "tools", "exec", "ocamllsp" },
                     filetypes = {
                         "ocaml",
-                        "ocaml.interface",
-                        "ocaml.menhir",
-                        "ocaml.cram",
                     },
                 },
                 zls = {},
@@ -157,7 +173,7 @@ return {
                 },
                 templ = {},
                 html = {},
-                htmx = {},
+                -- htmx = {},
                 cssls = {},
                 tailwindcss = {
                     root_dir = lsp.util.root_pattern("tailwind.config.js", "tailwind.config.ts"),
@@ -215,9 +231,13 @@ return {
             })
 
             for server, config in pairs(servers) do
-                config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, config.capabilities or {})
+                -- config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, config.capabilities or {})
+                config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+
                 lsp[server].setup(config)
             end
+
+            -- require("ocaml").setup()
 
             vim.diagnostic.config({
                 virtual_text = true,

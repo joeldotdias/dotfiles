@@ -1,4 +1,76 @@
 return {
+    "saghen/blink.cmp",
+    version = "*",
+    dependencies = {
+        "L3MON4D3/LuaSnip",
+        version = "v2.*",
+    },
+
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+        keymap = {
+            preset = "default",
+            ["<CR>"] = { "select_and_accept", "fallback" },
+            ["<C-p>"] = { "select_prev", "fallback" },
+            ["<C-n>"] = { "select_next", "fallback" },
+            ["<C-b>"] = { "scroll_documentation_down" },
+            ["<C-f>"] = { "scroll_documentation_up" },
+            ["<Tab>"] = {},
+            ["<S-Tab>"] = {},
+        },
+
+        completion = {
+            menu = {
+                draw = {
+                    padding = { 1, 0 },
+                    columns = { { "label", "label_description", gap = 1 }, { "kind" } },
+                },
+            },
+            trigger = {
+                show_on_insert_on_trigger_character = false,
+            },
+        },
+
+        --[[ snippets = {
+            expand = function(snippet)
+                require("luasnip").lsp_expand(snippet)
+            end,
+            active = function(filter)
+                if filter and filter.direction then
+                    return require("luasnip").jumpable(filter.direction)
+                end
+                return require("luasnip").in_snippet()
+            end,
+            jump = function(direction)
+                require("luasnip").jump(direction)
+            end,
+        }, ]]
+        snippets = { preset = "luasnip" },
+
+        sources = {
+            default = {
+                "lsp",
+                "path",
+                "snippets",
+                "buffer",
+            },
+            -- disable cmdline completions
+            cmdline = {},
+        },
+
+        appearance = {
+            use_nvim_cmp_as_default = true,
+            nerd_font_variant = "mono",
+        },
+
+        -- signature = { enabled = true },
+    },
+
+    opts_extend = { "sources.default" },
+}
+
+--[[ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
@@ -64,4 +136,4 @@ return {
             -- },
         })
     end,
-}
+} ]]

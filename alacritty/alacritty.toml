@@ -1,6 +1,11 @@
 [env]
 TERM = "xterm-256color"
 
+[general]
+import = [
+    "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
 [window]
 opacity = 0.8
 
@@ -22,8 +27,3 @@ style = "Bold"
 [font.italic]
 family = "Fira Code"
 style = "Italic"
-
-[general]
-import = [
-    "~/.config/alacritty/catppuccin-mocha.toml"
-]

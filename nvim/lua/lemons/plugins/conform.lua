@@ -9,7 +9,7 @@ return {
             formatters_by_ft = {
                 rust = { "rustfmt" },
                 go = { "gofmt" },
-                ocaml = { "ocamlformat" },
+                -- ocaml = { "ocamlformat" },
                 sh = { "shfmt" },
                 lua = { "stylua" },
                 typescript = { "prettier" },
@@ -18,6 +18,7 @@ return {
                 javascriptreact = { "prettier" },
                 -- python = { "black" },
                 python = { "ruff_fix", "ruff_format" },
+                java = { "google-java-format" },
             },
         })
 
