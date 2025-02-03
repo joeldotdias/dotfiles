@@ -1,50 +1,6 @@
 * {
     border: none;
     font-family: 'Fira Code', 'Symbols Nerd Font Mono';
-    font-size: 18px;
-    font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
-    min-height: 23px;
-}
-
-window#waybar {
-    background: rgba(0, 0, 0, 0.8);
-    color: #ffffff;
-}
-
-#custom-arch,
-#workspaces,
-#clock,
-#backlight,
-#pulseaudio,
-#bluetooth,
-#network,
-#battery {
-    background: transparent;
-    color: #ffffff;
-    padding: 0 10px;
-    margin: 0;
-}
-
-#workspaces button {
-    color: #ffffff;
-    padding: 0 5px;
-}
-
-#custom-arch,
-#workspaces,
-#clock,
-#backlight,
-#pulseaudio,
-#bluetooth,
-#network,
-#battery {
-    margin: 0;
-    padding: 0 8px;
-}
-
-/* * {
-    border: none;
-    font-family: 'Fira Code', 'Symbols Nerd Font Mono';
     font-size: 20px;
     font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
     min-height: 20px;
@@ -111,8 +67,8 @@ window#waybar {
 #pulseaudio {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-} */
+}
 
-/* #clock {
+#clock {
     margin-right: 0;
-} */
+}

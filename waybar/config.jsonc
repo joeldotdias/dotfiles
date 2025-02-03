@@ -1,13 +1,13 @@
 {
     "layer": "top",
+    "position": "bottom",
     "modules-left": [
         "custom/arch",
         "hyprland/workspaces"
     ],
-    "modules-center": [
-        "clock"
-    ],
+    "modules-center": [],
     "modules-right": [
+        "clock",
         "backlight",
         "pulseaudio",
         "bluetooth",
@@ -28,11 +28,13 @@
         }
     },
     "clock": {
-        "format": "<span color='#11111b'> </span>{:%H:%M}"
+        // "format": "<span color='#11111b'> </span>{:%H:%M}"
+        "format": " {:%H:%M}"
     },
     "backlight": {
         "device": "intel_backlight",
-        "format": "<span color='#11111b'>{icon}</span> {percent}%",
+        // "format": "<span color='#11111b'>{icon}</span> {percent}%",
+        "format": "{icon} {percent}%",
         "format-icons": [
             "",
             "",
@@ -46,7 +48,8 @@
         ]
     },
     "pulseaudio": {
-        "format": "<span color='#11111b'>{icon}</span> {volume}%",
+        // "format": "<span color='#11111b'>{icon}</span> {volume}%",
+        "format": "{icon} {volume}%",
         "format-muted": "",
         "tooltip": false,
         "format-icons": {
@@ -65,16 +68,20 @@
         "scroll-step": 1
     },
     "bluetooth": {
-        "format": "<span color='#11111b'></span> {status}",
+        // "format": "<span color='#11111b'></span> {status}",
+        "format": " {status}",
         "format-disabled": "", // an empty format will hide the module
-        "format-connected": "<span color='#11111b'></span> {num_connections}",
+        // "format-connected": "<span color='#11111b'></span> {num_connections}",
+        "format-connected": " {num_connections}",
         "tooltip-format": "{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}   {device_address}"
     },
     "network": {
         "format": "{ifname}",
-        "format-wifi": "<span color='#000000'> </span>",
-        "format-disconnected": "<span color='#000000'>󰖪 </span>No Network",
+        // "format-wifi": "<span color='#000000'> </span>",
+        // "format-disconnected": "<span color='#000000'>󰖪 </span>No Network",
+        "format-wifi": " ",
+        "format-disconnected": "󰖪 No Network",
         "tooltip-format": "{ifname} {essid} via {gwaddr} ",
         "max-length": 50
     },
