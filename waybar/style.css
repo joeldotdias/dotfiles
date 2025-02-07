@@ -7,11 +7,13 @@
 }
 
 window#waybar {
-    background: rgba(0, 0, 0, 0.8);
-    color: #ffffff;
+    /* background: rgba(0, 0, 0, 0.8); */
+    /* color: #ffffff; */
+    background: #292b2e;
+    color: #fdf6e3;
 }
 
-#custom-arch,
+/* #custom-arch,
 #workspaces,
 #clock,
 #backlight,
@@ -23,6 +25,20 @@ window#waybar {
     color: #ffffff;
     padding: 0 10px;
     margin: 0;
+} */
+
+#workspaces,
+#custom-arch,
+#clock.1,
+#clock.2,
+#clock.3,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#disk,
+#network {
+    background: #1a1a1a;
 }
 
 #workspaces button {
@@ -30,16 +46,56 @@ window#waybar {
     padding: 0 5px;
 }
 
+#custom-right-arrow-dark,
+#custom-left-arrow-dark {
+    color: #1a1a1a;
+}
+
+#custom-right-arrow-light,
+#custom-left-arrow-light {
+    color: #292b2e;
+    background: #1a1a1a;
+}
+
 #custom-arch,
 #workspaces,
 #clock,
 #backlight,
 #pulseaudio,
+#memory,
+#cpu,
+#disk,
 #bluetooth,
 #network,
 #battery {
     margin: 0;
     padding: 0 8px;
+}
+
+#pulseaudio {
+    color: #268bd2;
+}
+
+#memory {
+    color: #2aa198;
+}
+
+#cpu {
+    color: #6c71c4;
+}
+
+#battery {
+    color: #44a12a;
+}
+
+#network {
+    color: #b58900;
+}
+
+#clock.1,
+#clock.2,
+#clock.3 {
+    color: #2a99a1;
 }
 
 /* * {

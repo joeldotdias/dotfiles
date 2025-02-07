@@ -7,15 +7,48 @@
     ],
     "modules-center": [],
     "modules-right": [
-        "clock",
-        "backlight",
+        "custom/left-arrow-dark",
+        "memory",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "cpu",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
         "pulseaudio",
-        "bluetooth",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "battery",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
         "network",
-        "battery"
+        "custom/left-arrow-dark",
+        "clock#1",
+        "custom/left-arrow-light",
+        "custom/left-arrow-dark",
+        "clock#2",
+        "custom/right-arrow-dark",
+        "custom/right-arrow-light",
+        "clock#3",
+        "custom/right-arrow-dark"
     ],
     "custom/arch": {
         "format": "  ",
+        "tooltip": false
+    },
+    "custom/left-arrow-dark": {
+        "format": "",
+        "tooltip": false
+    },
+    "custom/left-arrow-light": {
+        "format": "",
+        "tooltip": false
+    },
+    "custom/right-arrow-dark": {
+        "format": "",
+        "tooltip": false
+    },
+    "custom/right-arrow-light": {
+        "format": "",
         "tooltip": false
     },
     "hyprland/workspaces": {
@@ -27,9 +60,21 @@
             "default": ""
         }
     },
-    "clock": {
-        // "format": "<span color='#11111b'> </span>{:%H:%M}"
-        "format": " {:%H:%M}"
+    // "clock": {
+    //     // "format": "<span color='#11111b'> </span>{:%H:%M}"
+    //     "format": " {:%H:%M}"
+    // },
+    "clock#1": {
+        "format": "{:%a}",
+        "tooltip": false
+    },
+    "clock#2": {
+        "format": "{:%H:%M}",
+        "tooltip": false
+    },
+    "clock#3": {
+        "format": "{:%m-%d}",
+        "tooltip": false
     },
     "backlight": {
         "device": "intel_backlight",
@@ -65,7 +110,7 @@
                 ""
             ]
         },
-        "scroll-step": 1
+        "scroll-step": 5
     },
     "bluetooth": {
         // "format": "<span color='#11111b'></span> {status}",
@@ -101,5 +146,18 @@
             " ",
             " "
         ]
+    },
+    "memory": {
+        "interval": 5,
+        "format": "Mem {}%"
+    },
+    "cpu": {
+        "interval": 5,
+        "format": "CPU {usage:2}%"
+    },
+    "disk": {
+        "interval": 5,
+        "format": "Disk {percentage_used:2}%",
+        "path": "/"
     }
 }
