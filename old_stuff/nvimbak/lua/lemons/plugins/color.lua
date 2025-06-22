@@ -1,12 +1,3 @@
-function ColorMyPencils(mode)
-    vim.cmd.colorscheme("rose-pine-moon")
-
-    if mode ~= "zen" then
-        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-    end
-end
-
 return {
     {
         "folke/tokyonight.nvim",
@@ -44,6 +35,7 @@ return {
 
     {
         "brenoprata10/nvim-highlight-colors",
+        event = { "BufWrite", "BufNewFile" },
         config = function()
             require("nvim-highlight-colors").setup({
                 render = "virtual",
@@ -51,20 +43,4 @@ return {
             })
         end,
     },
-
-    -- {
-    --     "rose-pine/neovim",
-    --     name = "rose-pine",
-    --     lazy = false,
-    --     priority = 900,
-    --
-    --     config = function()
-    --         require("rose-pine").setup({
-    --             styles = {
-    --                 bold = false,
-    --             },
-    --         })
-    --         -- ColorMyPencils()
-    --     end,
-    -- },
 }

@@ -1,10 +1,5 @@
 return {
     {
-        "folke/lazydev.nvim",
-        ft = "lua",
-        opts = {},
-    },
-    {
         "neovim/nvim-lspconfig",
         dependencies = {
             -- Mason
@@ -17,30 +12,18 @@ return {
 
             -- completions
             "saghen/blink.cmp",
-
-            -- {
-            --     "tjdevries/ocaml.nvim",
-            --     build = "make",
-            -- },
         },
 
         config = function()
             local lsp = require("lspconfig")
+            local blink_cmp = require("blink.cmp")
 
-            -- merge native LSP capabilities with the ones provided by nvim_cmp
-            --[[ local capabilities = vim.tbl_deep_extend(
-                "force",
-                {},
-                vim.lsp.protocol.make_client_capabilities(),
-                require("cmp_nvim_lsp").default_capabilities()
-            ) ]]
-
-            local Lemonade = vim.api.nvim_create_augroup("Lemonade", { clear = true })
+            local LspLemon = vim.api.nvim_create_augroup("LspLemon", { clear = true })
 
             -- create an autocommand that sets keymaps whenever an LSP is attached to the buffer
             -- instead of passing an on_attach() function to server setup
             vim.api.nvim_create_autocmd("LspAttach", {
-                group = Lemonade,
+                group = LspLemon,
                 desc = "LSP keymaps",
                 callback = function(event)
                     -- helper function to set LSP keymaps
@@ -65,6 +48,21 @@ return {
                 end,
             })
 
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
+                callback = function(args)
+                    local client = vim.lsp.get_client_by_id(args.data.client_id)
+                    if client == nil then
+                        return
+                    end
+                    if client.name == "ruff" then
+                        -- Disable hover in favor of basedpyright
+                        client.server_capabilities.hoverProvider = false
+                    end
+                end,
+                desc = "LSP: Disable hover capability from Ruff",
+            })
+
             require("mason").setup({
                 ui = {
                     icons = {
@@ -74,6 +72,15 @@ return {
                     },
                 },
             })
+
+            local jsts_settings = {
+                suggest = { completeFunctionCalls = true },
+                inlayHints = {
+                    functionLikeReturnTypes = { enabled = true },
+                    parameterNames = { enabled = "literals" },
+                    variableTypes = { enabled = true },
+                },
+            }
 
             -- {} --> use the default config
             local servers = {
@@ -88,25 +95,14 @@ return {
                     },
                 },
                 gopls = {},
-                -- ocamllsp = {
-                --     manual_install = true,
-                --     cmd = { "dune", "tools", "exec", "ocamllsp" },
-                --     filetypes = {
-                --         "ocaml",
-                --         "ocaml.interface",
-                --         "ocaml.menhir",
-                --         "ocaml.cram",
-                --     },
-                -- },
                 ocamllsp = {
                     manual_install = true,
-                    -- cmd = { "dune", "tools", "exec", "ocamllsp" },
                     filetypes = {
                         "ocaml",
                     },
                 },
                 zls = {},
-                ts_ls = {
+                --[[ ts_ls = {
                     settings = {
                         implicitProjectConfiguration = {
                             checkJs = true, -- for jsdoc
@@ -115,33 +111,61 @@ return {
                             completeFunctionCalls = true,
                         },
                     },
+                }, ]]
+                vtsls = {
+                    settings = {
+                        typescript = jsts_settings,
+                        javascript = jsts_settings,
+                        vtsls = {
+                            autoUseWorkspaceTsdk = true,
+                            experimental = {
+                                -- Inlay hint truncation.
+                                maxInlayHintLength = 30,
+                                -- For completion performance.
+                                completion = {
+                                    enableServerSideFuzzyMatch = true,
+                                },
+                            },
+                        },
+                    },
                 },
+
                 clangd = {
+                    cmd = {
+                        "clangd",
+                        "--clang-tidy",
+                        "--header-insertion=never",
+                        "--fallback-style=none",
+                        "--function-arg-placeholders=false",
+                    },
                     capabilities = {
                         offsetEncoding = { "utf-16" },
                     },
                 },
+
                 bashls = {},
-                -- basedpyright = {
-                --     settings = {
-                --         basedpyright = {
-                --             -- typeCheckingMode = "standard",
-                --             disableOrganizeImports = true,
-                --             disableTaggedHints = false,
-                --             analysis = {
-                --                 typeCheckingMode = "standard",
-                --                 useLibraryCodeForTypes = true, -- Analyze library code for type information
-                --                 autoImportCompletions = true,
-                --                 autoSearchPaths = true,
-                --                 diagnosticSeverityOverrides = {
-                --                     reportIgnoreCommentWithoutRule = true,
-                --                 },
-                --             },
-                --         },
-                --     },
-                -- },
-                -- ruff = {},
-                pyright = {},
+
+                basedpyright = {
+                    settings = {
+                        basedpyright = {
+                            analysis = {
+                                typeCheckingMode = "standard",
+                                autoImportCompletions = true,
+                                useLibraryCodeForTypes = true, -- Analyze library code for type information
+                                autoSearchPaths = true,
+                                diagnosticMode = "workspace",
+                                reportExplicitAny = false,
+                            },
+                        },
+                    },
+                },
+
+                ruff = {
+                    init_options = {
+                        LogLevel = "error",
+                    },
+                },
+
                 lua_ls = {
                     settings = {
                         Lua = {
@@ -176,7 +200,7 @@ return {
                 -- htmx = {},
                 cssls = {},
                 tailwindcss = {
-                    root_dir = lsp.util.root_pattern("tailwind.config.js", "tailwind.config.ts"),
+                    root_dir = lsp.util.root_pattern("tailwind.config.js", "tailwind.config.ts", "postcss*"),
                     settings = {
                         tailwindCSS = {
                             experimental = {
@@ -204,7 +228,6 @@ return {
                         json = {
                             schemas = require("schemastore").json.schemas(),
                             validate = { enable = true },
-                            -- format = { enable = true },
                         },
                     },
                 },
@@ -223,7 +246,6 @@ return {
                 "shfmt",
                 "prettier",
                 "stylua",
-                -- "black",
             }
 
             require("mason-tool-installer").setup({
@@ -231,13 +253,9 @@ return {
             })
 
             for server, config in pairs(servers) do
-                -- config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, config.capabilities or {})
-                config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-
+                config.capabilities = blink_cmp.get_lsp_capabilities(config.capabilities)
                 lsp[server].setup(config)
             end
-
-            -- require("ocaml").setup()
 
             vim.diagnostic.config({
                 virtual_text = true,

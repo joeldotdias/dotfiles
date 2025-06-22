@@ -1,1 +1,5 @@
-require("lemons")
+require("lemons.set")
+require("lemons.keymaps")
+require("lemons.lazy")
+require("lemons.lsp")
+require("lemons.autocmd")

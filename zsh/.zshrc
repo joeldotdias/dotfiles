@@ -19,6 +19,8 @@ export TERM=screen-256color
 export EDITOR=nvim
 export GIT_EDITOR=nvim
 
+export SDL_VIDEODRIVER=wayland
+
 # keep previous commands in history
 setopt NO_EXTENDED_HISTORY
 setopt NO_SHARE_HISTORY
@@ -84,6 +86,12 @@ PROJ_PATH=$HOME/bin/scripts:$HOME/bin/projects
 
 export PATH=$PATH:$CORE_PATH:$CARGO_PATH:$GO_PATH:$ZIG_PATH:$BUN_PATH:$PROJ_PATH
 
+
+# antlr
+# export CLASSPATH=".:/usr/local/lib/antlr-4.13.2-complete.jar:$CLASSPATH"
+# alias antlr4='java -Xmx500M -cp "/usr/local/lib/antlr-4.13.2-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
+# alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.13.2-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
+
 # starship
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship.toml
@@ -145,3 +153,5 @@ export PATH="$PATH:/home/joeldotdias/.turso"
 
 # # dune
 # source $HOME/.dune/env/env.zsh
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"

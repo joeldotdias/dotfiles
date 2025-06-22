@@ -73,18 +73,27 @@ return {
             vim.keymap.set("n", "<leader>sl", "<cmd>CellularAutomaton slide<CR>")
         end,
     },
+    --
+    {
+        "tamton-aquib/duck.nvim",
+        config = function()
+            local duck = require("duck")
 
-    -- {
-    --     "tamton-aquib/duck.nvim",
-    --     config = function()
-    --         local duck = require("duck")
-
-    --         vim.keymap.set("n", "<leader>dh", function() duck.hatch("🦀") end, {})
-    --         vim.keymap.set("n", "<leader>dk", function() duck.cook() end, {})
-    --         vim.keymap.set("n", "<leader>da", function() duck.cook_all() end, {})
-    --     end
-    -- }
-
+            vim.keymap.set("n", "<leader>dh", function()
+                -- duck.hatch("🦀")
+                for _ = 1, 7, 1 do
+                    duck.hatch()
+                end
+            end, {})
+            vim.keymap.set("n", "<leader>dk", function()
+                duck.cook()
+            end, {})
+            vim.keymap.set("n", "<leader>da", function()
+                duck.cook_all()
+            end, {})
+        end,
+    },
+    --
     -- {
     --     "folke/noice.nvim",
     --     event = "VeryLazy",

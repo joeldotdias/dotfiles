@@ -1,25 +1,48 @@
--- Thank you incredibly nice people on r/neovim
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 
-local LemonBasket = vim.api.nvim_create_augroup("LemonBasket", { clear = true })
-local HighlightYank = vim.api.nvim_create_augroup("HighlightYank", { clear = true })
-
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-    group = HighlightYank,
-    desc = "Workaround for wsl clipboard non sense",
-    pattern = "*",
+autocmd({ "BufReadPost" }, {
+    group = augroup("pomodoro", { clear = true }),
+    desc = "Pomodoro so I take breaks",
+    once = true,
     callback = function()
-        vim.highlight.on_yank({
-            higroup = "Visual",
-        })
-        if vim.fn.has("wsl") == 1 then
-            vim.fn.system("clip.exe", vim.fn.getreg('"'))
+        local timer = vim.loop.new_timer()
+        if not timer then
+            return
         end
+
+        local seconds = 60 * 60
+
+        timer:start(
+            0,
+            1000,
+            vim.schedule_wrap(function()
+                if seconds > 0 then
+                    seconds = seconds - 1
+                else
+                    timer:stop()
+                    vim.cmd("CellularAutomaton make_it_rain")
+                end
+            end)
+        )
     end,
 })
 
--- https://github.com/MariaSolOs/dotfiles/blob/fedora/.config/nvim/lua/autocmds.lua
-vim.api.nvim_create_autocmd("BufReadPost", {
-    group = LemonBasket,
+-- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/init.lua
+autocmd({ "BufWritePre" }, {
+    group = augroup("remove_ws", { clear = true }),
+    desc = "Remove unnecessary whitespaces at EOLs",
+    pattern = "*",
+    callback = function()
+        local view = vim.fn.winsaveview()
+        vim.cmd([[%s/\s\+$//e]])
+        vim.fn.winrestview(view)
+    end,
+})
+
+-- https://github.com/MariaSolOs/dotfiles/blob/main/.config/nvim/lua/autocmds.lua
+autocmd("BufReadPost", {
+    group = augroup("last_loc", { clear = true }),
     desc = "Go to the last location when opening a buffer",
     callback = function(args)
         local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
@@ -30,19 +53,8 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    group = LemonBasket,
-    desc = "Remove unnecessary whitespaces at EOLs",
-    pattern = "*",
-    callback = function()
-        local view = vim.fn.winsaveview()
-        vim.cmd([[%s/\s\+$//e]])
-        vim.fn.winrestview(view)
-    end,
-})
-
-vim.api.nvim_create_autocmd({ "FileType" }, {
-    group = LemonBasket,
+autocmd({ "FileType" }, {
+    group = augroup("spell_check", { clear = true }),
     desc = "Enable spell check for some files",
     pattern = { "gitcommit", "markdown", "txt" },
     callback = function()
@@ -51,20 +63,10 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 -- https://github.com/I-Rakesh/nvim-conf/blob/master/lua/core/autocmd.lua
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-    group = LemonBasket,
+autocmd({ "BufEnter" }, {
+    group = augroup("disable_newline_autocomment", { clear = true }),
     desc = "Disable auto-commenting next line",
     callback = function()
         vim.cmd("set formatoptions-=cro")
-    end,
-})
-
-vim.api.nvim_create_autocmd({ "VimResized" }, {
-    group = LemonBasket,
-    desc = "Resize windows when terminal is resized",
-    callback = function()
-        local curr_tab = vim.fn.tabpagenr()
-        vim.cmd("tabdo wincmd =")
-        vim.cmd("tabnext " .. curr_tab)
     end,
 })
