@@ -1,104 +1,20 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
 add_newline = false
-command_timeout = 1050
+command_timeout = 700
 
-palette = "catppuccin_mocha"
+palette = "shades"
 
-# A minimal left prompt
-format = """$directory$character"""
-# move the rest of the prompt to the right
-right_format = """$all"""
+format = "$directory$character"
+right_format = "$git_branch"
 
 [character]
-success_symbol = "[❯](#66f55b)"
-
-[package]
-disabled = true
-
-[cmd_duration]
-disabled = true
-
-[jobs]
-disabled = true
-
-[git_status]
-disabled = true
-
-# Life's too short to be coding in Java
-[java]
-disabled = true
+success_symbol = "[❯](green)"
 
 [git_branch]
 symbol = " "
 format = "on [$symbol$branch ](lavender)"
 
-[c]
-symbol = ""
-format = "[$symbol $version ](blue)"
-
-[golang]
-symbol = ""
-format = "[$symbol $version ](bold cyan)"
-
-[rust]
-symbol = ""
-format = "[$symbol $version ](bold red)"
-
-[kotlin]
-symbol = ""
-format = "[$symbol $version ](bold blue)"
-
-[ocaml]
-format = "[$symbol $version ]($style)"
-# format = "[$symbol ($version )(\\($switch_indicator$switch_name\\) )]($style)"
-
-[zig]
-symbol = ""
-format = "[$symbol $version ]($style)"
-
-[lua]
-symbol = ""
-format = "[$symbol $version ](bold blue)"
-
-[python]
-symbol = ""
-format = "[$symbol $version ](bright-green)"
-
-[nodejs]
-symbol = ""
-format = "[$symbol $version ](bold green)"
-
-[gradle]
-disabled = true
-
-[custom.docker]
-symbol = " "
-format = "[$symbol](bold blue)"
-detect_files = ["Dockerifle", "docker-compose.yml"]
-
-[palettes.catppuccin_mocha]
-rosewater = "#f5e0dc"
-flamingo = "#f2cdcd"
-pink = "#f5c2e7"
-mauve = "#cba6f7"
-red = "#f38ba8"
-maroon = "#eba0ac"
-peach = "#fab387"
-yellow = "#f9e2af"
-green = "#a6e3a1"
-teal = "#94e2d5"
-sky = "#89dceb"
-sapphire = "#74c7ec"
-blue = "#89b4fa"
+[palettes.shades]
+green = "#66f55b"
 lavender = "#b4befe"
-text = "#cdd6f4"
-subtext1 = "#bac2de"
-subtext0 = "#a6adc8"
-overlay2 = "#9399b2"
-overlay1 = "#7f849c"
-overlay0 = "#6c7086"
-surface2 = "#585b70"
-surface1 = "#45475a"
-surface0 = "#313244"
-base = "#1e1e2e"
-mantle = "#181825"
-crust = "#11111b"

@@ -2,9 +2,10 @@
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
+-- using comment.nvim instead coz it restores cursors position
 -- comments
-vim.keymap.set("n", "<leader>cc", "gcc", { remap = true })
-vim.keymap.set("v", "cl", "gc", { remap = true })
+-- vim.keymap.set("n", "<leader>cc", "gcc", { remap = true })
+-- vim.keymap.set("v", "cl", "gc", { remap = true })
 
 -- move the entire selection vertically with auto indenting
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

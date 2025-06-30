@@ -3,7 +3,6 @@
 ---@type vim.lsp.Config
 return {
     cmd = { "basedpyright-langserver", "--stdio" },
-    -- cmd = { 'npm', '-C', '~/dev/basedpyright', 'run', 'run:langserver' },
     filetypes = { "python" },
     root_markers = {
         "pyproject.toml",

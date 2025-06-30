@@ -11,7 +11,7 @@ autocmd({ "BufReadPost" }, {
             return
         end
 
-        local seconds = 60 * 60
+        local seconds = 90 * 60
 
         timer:start(
             0,

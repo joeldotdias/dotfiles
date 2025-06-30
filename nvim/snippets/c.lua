@@ -1,24 +1,20 @@
-require("luasnip.session.snippet_collection").clear_snippets("go")
-
 local ls = require("luasnip")
 local fmt = require("luasnip.extras.fmt").fmt
 local s = ls.snippet
 local i = ls.insert_node
 
-return {
+ls.add_snippets("c", {
     s(
-        "grr",
+        "main",
         fmt(
             [[
-                if err != nil {{
-                    return {}
-                }}
+            int main(int argc, char*argv) {{
                 {}
-            ]],
+            }}
+        ]],
             {
-                i(1, "err"),
                 i(0),
             }
         )
     ),
-}
+})

@@ -34,6 +34,15 @@ return {
                 desc = "Buffer lines",
                 mode = { "n", "x" },
             },
+            {
+                "<leader>cf",
+                function()
+                    fzf.files({
+                        cwd = "$HOME/.dotfiles",
+                    })
+                end,
+                mode = { "n" },
+            },
         }
     end,
     opts = {
@@ -48,5 +57,41 @@ return {
             ["--info"] = "default",
             ["--layout"] = "reverse-list",
         },
+        keymap = {
+            builtin = {
+                ["<C-i>"] = "toggle-preview",
+            },
+        },
+        lsp = {
+            code_actions = {
+                winopts = {
+                    height = 0.7,
+                    width = 0.6,
+                    -- relative = "cursor", -- not sure how i feel about this
+                    preview = {
+                        hidden = true,
+                        vertical = "down:50%",
+                    },
+                },
+            },
+        },
+        oldfiles = {
+            include_current_session = true,
+        },
     },
+
+    init = function()
+        ---@diagnostic disable-next-line: duplicate-set-field
+        vim.ui.select = function(items, opts, on_choice)
+            local fzf_ui_select = require("fzf-lua.providers.ui_select")
+
+            if not fzf_ui_select.is_registered() then
+                fzf_ui_select.register()
+            end
+
+            if #items > 0 then
+                return vim.ui.select(items, opts, on_choice)
+            end
+        end
+    end,
 }

@@ -33,7 +33,7 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
---vim.g.skip_ts_context_commentstring_module = true
+vim.g.skip_ts_context_commentstring_module = true
 
 -- vim.opt.rtp:prepend(vim.fn.trim(vim.fn.system('opam config var ocp-indent:share')) .. '/vim')
 
