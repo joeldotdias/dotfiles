@@ -22,7 +22,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         local fzf = require("fzf-lua")
 
-        lsp_key("K", vim.lsp.buf.hover)
+        lsp_key("K", function()
+            vim.lsp.buf.hover({ border = "rounded" })
+        end)
         lsp_key("gd", fzf.lsp_definitions)
         lsp_key("gi", fzf.lsp_implementations)
         lsp_key("<leader>D", fzf.lsp_typedefs)
