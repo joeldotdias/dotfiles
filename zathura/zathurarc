@@ -1,5 +1,7 @@
 set selection-clipboard clipboard
 
+# set font Hack
+
 # Tokyonight color theme for Zathura
 # Swaps Foreground for Background to get a light version if the user prefers
 #

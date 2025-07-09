@@ -50,6 +50,9 @@ source <(fzf --zsh)
 # --cmd cd removes the need to alias cd to z
 eval "$(zoxide init --cmd cd zsh)"
 
+# ocaml
+[[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh"  > /dev/null 2> /dev/null
+
 #aliases
 alias conf="cd ~/.dotfiles/"
 alias vi="/usr/bin/vim"

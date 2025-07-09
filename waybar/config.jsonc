@@ -5,7 +5,6 @@
         "custom/arch",
         "hyprland/workspaces"
     ],
-    // "modules-center": [],
     "modules-right": [
         "custom/left-arrow-dark",
         "memory",
