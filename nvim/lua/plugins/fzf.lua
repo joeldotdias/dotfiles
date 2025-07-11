@@ -11,6 +11,7 @@ return {
             { "<leader>tj", fzf.help_tags },
             { "<leader>gw", fzf.grep_cword },
             { "<leader>lg", fzf.live_grep },
+            { "<leader>ff", fzf.resume },
 
             {
                 "<leader>fb",

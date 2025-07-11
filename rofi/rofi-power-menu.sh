@@ -11,10 +11,10 @@ $lock
 $reboot
 $logout
 $sleep" | rofi -dmenu -i -p "Power" \
-    -theme "$HOME/.dotfiles/rofi/power-theme.rasi")
+    -theme "$XDG_CONFIG_HOME/rofi/power-theme.rasi")
 
 if [ "$selected_option" == "$lock" ]; then
-    hyprlock -q
+    hyprlock --immediate
 elif [ "$selected_option" == "$logout" ]; then
     loginctl terminate-user "$(whoami)"
 elif [ "$selected_option" == "$shutdown" ]; then

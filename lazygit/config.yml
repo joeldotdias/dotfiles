@@ -1,5 +1,11 @@
+notARepository: quit
+
+os:
+  editPreset: nvim
+
 gui:
   nerdFontsVersion: "3"
+  border: rounded
   theme:
     activeBorderColor:
       - "#ff9e64"
@@ -25,3 +31,4 @@ gui:
       - "#db4b4b"
     defaultFgColor:
       - "#c0caf5"
+

@@ -2,5 +2,14 @@
     "$schema": "/etc/xdg/swaync/configSchema.json",
 
     "positionX": "right",
-    "positionY": "top"
+    "positionY": "top",
+    "layer": "overlay",
+    "timeout": 6,
+
+    "widget-config": {
+        "mpris":{
+            "image-size": 96,
+            "image-radius": 12
+        }
+    }
 }

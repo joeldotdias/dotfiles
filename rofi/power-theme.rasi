@@ -1,6 +1,8 @@
 configuration {
-    location:                       0;
-    font:                           "Font Awesome 6 Free:style=regular";
+    location: 0;
+    font: "Font Awesome 6 Free:style=regular";
+    kb-row-left: "h";
+    kb-row-right: "l";
 }
 
 
