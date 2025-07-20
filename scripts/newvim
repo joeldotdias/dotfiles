@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
 
-# check_mason_registry() {
-#     local url="registry.mason.nvim.com"
-#     ping_res=$(ping -c 4 "$url")
-#
-#     if [$? -eq 0]; then
-#     else
-#         echo "Ping to re
-#     fi
-# }
-
 load_nvim() {
     local nvim_prev="/usr/local/share/nvim"
     local nvim_fallback="$HOME/.local/share/nvim"

@@ -20,6 +20,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.keymap.set(mode, keymap, func, { buffer = event.buf })
         end
 
+        vim.lsp.document_color.enable(true, event.buf, { style = "virtual" })
+
         local fzf = require("fzf-lua")
 
         lsp_key("K", function()

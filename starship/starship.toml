@@ -16,5 +16,5 @@ symbol = " "
 format = "on [$symbol$branch ](lavender)"
 
 [palettes.shades]
-green = "#66f55b"
+green = "#43fa34"
 lavender = "#b4befe"

@@ -1,6 +1,8 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_PICTURES_DIR="$HOME/Pictures"
 
 export QT_QPA_PLATFORM=wayland
 export XDG_CURRENT_DESKTOP=Hyprland
@@ -10,6 +12,7 @@ export TERM=screen-256color
 # make nvim the default editor
 export EDITOR=nvim
 export GIT_EDITOR=nvim
+export MANPAGER="$EDITOR +Man!"
 
 export SDL_VIDEODRIVER=wayland
 

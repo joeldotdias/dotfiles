@@ -4,12 +4,25 @@
     "positionX": "right",
     "positionY": "top",
     "layer": "overlay",
+    "layer-shell": true,
+
+    "control-center-layer": "top",
+    "control-center-margin-top": 2,
+    "control-center-margin-bottom": 5,
+    "control-center-margin-right": 1,
+
     "timeout": 6,
+
+    "widgets": [
+        "mpris",
+        "title",
+        "dnd",
+        "notifications"
+    ],
 
     "widget-config": {
         "mpris":{
-            "image-size": 96,
-            "image-radius": 12
+            "show-album-art": "always"
         }
     }
 }

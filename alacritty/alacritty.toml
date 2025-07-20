@@ -12,13 +12,13 @@ opacity = 0.92
 size = 14.2
 
 [font.normal]
-family = "Fira Code Nerd Font Mono"
+family = "Fira Code Nerd Font"
 style = "Regular"
 
 [font.bold]
-family = "Fira Code Nerd Font Mono"
+family = "Fira Code Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "Fira Code Nerd Font Mono"
+family = "Fira Code Nerd Font"
 style = "Italic"

@@ -9,7 +9,10 @@
     "uptime",
     "packages",
     "shell",
-    "display",
+    {
+        "type": "display",
+        "key": "Display"
+    },
     "de",
     "wm",
     "wmtheme",
@@ -18,14 +21,17 @@
     "font",
     "cursor",
     "terminal",
-    "terminalfont",
     "cpu",
     "gpu",
     "memory",
     "swap",
     "disk",
     "localip",
-    "battery",
+    {
+        "type": "battery",
+        "key": "Battery",
+        "format": "{4} ({12} hrs, {13} mins remaining) [{5}]"
+    },
     "poweradapter",
     "locale",
     "break",
