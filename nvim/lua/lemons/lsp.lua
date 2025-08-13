@@ -1,3 +1,47 @@
+local methods = vim.lsp.protocol.Methods
+
+---@param client vim.lsp.Client
+---@param bufnr integer
+local function on_attach(client, bufnr)
+    ---@param keymap string
+    ---@param func function|string
+    ---@param mode? string
+    local lsp_key = function(keymap, func, mode)
+        mode = mode or "n"
+        vim.keymap.set(mode, keymap, func, { buffer = bufnr })
+    end
+
+    local fzf = require("fzf-lua")
+
+    vim.lsp.document_color.enable(true, bufnr, { style = "virtual" })
+
+    lsp_key("K", function()
+        vim.lsp.buf.hover({ border = "rounded" })
+    end)
+
+    lsp_key("gi", fzf.lsp_implementations)
+    lsp_key("<leader>D", fzf.lsp_typedefs)
+    lsp_key("<leader>ds", fzf.lsp_document_symbols)
+    lsp_key("<leader>ws", fzf.lsp_live_workspace_symbols)
+    lsp_key("<leader>ca", function()
+        fzf.lsp_code_actions({ silent = true })
+    end)
+    lsp_key("<leader>br", fzf.lsp_references)
+    lsp_key("<leader>rn", vim.lsp.buf.rename)
+    lsp_key("<C-h>", vim.lsp.buf.signature_help, "i")
+
+    if client:supports_method(methods.textDocument_definition) then
+        lsp_key("gd", fzf.lsp_definitions)
+        lsp_key("gD", function()
+            fzf.lsp_definitions({ jump1 = false })
+        end)
+    end
+
+    if client:supports_method(methods.textDocument_colorPresentation) then
+        lsp_key("grc", vim.lsp.document_color.color_presentation)
+    end
+end
+
 vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
     once = true,
     callback = function()
@@ -14,30 +58,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("lsp_keys", { clear = true }),
     desc = "LSP keymaps",
     callback = function(event)
-        -- helper function to set LSP keymaps
-        local lsp_key = function(keymap, func, mode)
-            mode = mode or "n"
-            vim.keymap.set(mode, keymap, func, { buffer = event.buf })
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+        if not client then
+            return
         end
 
-        vim.lsp.document_color.enable(true, event.buf, { style = "virtual" })
-
-        local fzf = require("fzf-lua")
-
-        lsp_key("K", function()
-            vim.lsp.buf.hover({ border = "rounded" })
-        end)
-        lsp_key("gd", fzf.lsp_definitions)
-        lsp_key("gi", fzf.lsp_implementations)
-        lsp_key("<leader>D", fzf.lsp_typedefs)
-        lsp_key("<leader>ds", fzf.lsp_document_symbols)
-        lsp_key("<leader>ws", fzf.lsp_live_workspace_symbols)
-        lsp_key("<leader>ca", function()
-            fzf.lsp_code_actions({ silent = true })
-        end)
-        lsp_key("<leader>br", fzf.lsp_references)
-        lsp_key("<leader>rn", vim.lsp.buf.rename)
-        lsp_key("<C-h>", vim.lsp.buf.signature_help, "i")
+        on_attach(client, event.buf)
     end,
 })
 
