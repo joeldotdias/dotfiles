@@ -1,4 +1,4 @@
--- pnpm install -g @vtsls/language-server
+-- npm i -g @vtsls/language-server
 
 local jsts_settings = {
     suggest = { completeFunctionCalls = true },

@@ -1,4 +1,4 @@
--- pnpm install -g bash-language-server
+-- npm i -g bash-language-server
 -- pacman -S shellcheck
 -- pacman -S shfmt
 

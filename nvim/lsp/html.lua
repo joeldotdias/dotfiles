@@ -1,4 +1,4 @@
--- pnpm install -g vscode-langservers-extracted
+-- npm i -g vscode-langservers-extracted
 
 ---@type vim.lsp.Config
 return {
