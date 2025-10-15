@@ -35,7 +35,5 @@ vim.opt.updatetime = 50
 
 vim.g.skip_ts_context_commentstring_module = true
 
--- vim.opt.rtp:prepend(vim.fn.trim(vim.fn.system('opam config var ocp-indent:share')) .. '/vim')
-
 ---@diagnostic disable-next-line: duplicate-set-field
 vim.deprecate = function() end

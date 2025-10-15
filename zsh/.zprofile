@@ -22,9 +22,9 @@ export GOPATH=$HOME/.go
 CORE_PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin
 CARGO_PATH=$HOME/.cargo/bin
 GOBIN=$GOPATH/bin
-PROJ_PATH=$HOME/bin/scripts:$HOME/bin/projects
+PERSONAL_PATH=$HOME/bin/scripts:$HOME/bin/projects:$HOME/bin/tools
 
-export PATH=$PATH:$CORE_PATH:$CARGO_PATH:$GOBIN:$PROJ_PATH
+export PATH=$PATH:$CORE_PATH:$CARGO_PATH:$GOBIN:$PERSONAL_PATH
 
 # pnpm
 export PNPM_HOME="/home/jdot/.local/share/pnpm"

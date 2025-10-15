@@ -1,6 +1,6 @@
 configuration {
     location: 0;
-    font: "Font Awesome 6 Free:style=regular";
+    font: "Font Awesome 7 Free:style=Regular";
     kb-row-left: "h";
     kb-row-right: "l";
 }
@@ -57,7 +57,7 @@ element {
 element-text {
     background-color:               inherit;
     text-color:                     inherit;
-    font:                           "Font Awesome 6 Free 30";
+    font:                           "Font Awesome 7 Free 30";
     expand:                         false;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
