@@ -1,5 +1,3 @@
-local methods = vim.lsp.protocol.Methods
-
 ---@param client vim.lsp.Client
 ---@param bufnr integer
 local function on_attach(client, bufnr)
@@ -12,8 +10,6 @@ local function on_attach(client, bufnr)
     end
 
     local fzf = require("fzf-lua")
-
-    vim.lsp.document_color.enable(true, bufnr, { style = "virtual" })
 
     lsp_key("K", function()
         vim.lsp.buf.hover({ border = "rounded" })
@@ -30,14 +26,15 @@ local function on_attach(client, bufnr)
     lsp_key("<leader>rn", vim.lsp.buf.rename)
     lsp_key("<C-h>", vim.lsp.buf.signature_help, "i")
 
-    if client:supports_method(methods.textDocument_definition) then
+    if client:supports_method("textDocument/definition") then
         lsp_key("gd", fzf.lsp_definitions)
         lsp_key("gD", function()
             fzf.lsp_definitions({ jump1 = false })
         end)
     end
 
-    if client:supports_method(methods.textDocument_colorPresentation) then
+    vim.lsp.document_color.enable(true, bufnr, { style = "virtual" })
+    if client:supports_method("textDocument/documentColor") then
         lsp_key("grc", vim.lsp.document_color.color_presentation)
     end
 end
