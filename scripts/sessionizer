@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+DIRS=(
+    "$HOME/learn"
+    "$HOME/tools"
+    "$HOME/projects"
+)
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    # find . -name .git -type d -prune
+    selected=$(
+        fd --type=dir --hidden --glob '.git' "${DIRS[@]}" |
+            xargs -I{} dirname "{}" |
+            sed -E "s|^$HOME/||" |
+            fzf --margin 10%
+    )
+
+    [[ $selected ]] && selected="$HOME/$selected"
+fi
+
+[[ ! $selected ]] && exit 0
+
+session_name=$(basename "$selected" | tr . _)
+
+if ! tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux new-session -ds "$session_name" -c "$selected"
+fi
+
+if [ -z "$TMUX" ]; then
+    tmux attach-session -t "$session_name"
+else
+    tmux attach-client -t "$session_name"
+fi

@@ -1,7 +1,7 @@
 return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
-        "echasnovski/mini.icons",
+        "nvim-mini/mini.icons",
     },
 
     config = function()

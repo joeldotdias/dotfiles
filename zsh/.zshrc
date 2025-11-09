@@ -57,7 +57,8 @@ eval "$(zoxide init --cmd cd zsh)"
 alias conf="cd ~/.dotfiles/"
 alias vi="/usr/bin/vim"
 alias vim="nvim"
+alias zsrc="source ~/.zshrc"
+alias ls="ls -C -A --color=auto"
 
-alias python="python3"
 
 eval "$(/home/jdot/.local/bin/mise activate zsh)" # added by https://mise.run/zsh

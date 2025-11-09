@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -x
+set -eo pipefail
+
+build_nvim() {
+    # use nightly version unless stable is sent as arg
+    local target="${1:-"nightly"}"
+    local nvim_data="$XDG_DATA_HOME/nvim"
+
+    git fetch --tags origin --force
+    git checkout "$target"
+
+    if [ "$target" == "master" ]; then
+        git pull origin --rebase
+    fi
+
+    [ -d "$nvim_data" ] && rm -rf "$nvim_data"
+
+    make distclean
+    make CMAKE_BUILD_TYPE=RelWithDebInfo
+    sudo make install
+}
+
+nvim_dir="$HOME/tools/neovim"
+
+if [ ! -d "$nvim_dir" ]; then
+    echo "===============Getting Neovim==============="
+    mkdir -p "$nvim_dir"
+    git clone https://github.com/neovim/neovim "$nvim_dir"
+fi
+
+(
+    cd "$nvim_dir" || return
+    build_nvim "$1"
+)
+
+nvim .

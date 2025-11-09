@@ -3,6 +3,6 @@
 if tmux ls; then
     sessions=$(tmux ls | awk '{print $1;}' | tr -d ':')
 
-    selected=$(printf "%s" "$sessions" | fzf)
+    selected=$(printf "%s" "$sessions" | fzf --margin=10%)
     tmux a -t "$selected"
 fi
