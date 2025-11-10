@@ -40,6 +40,11 @@ function clear-screen-and-scrollback() {
 zle -N clear-screen-and-scrollback
 bindkey '^L' clear-screen-and-scrollback
 
+function launch-sessionizer() {
+    sessionizer
+}
+zle -N launch-sessionizer
+bindkey '^F' launch-sessionizer
 
 # starship
 eval "$(starship init zsh)"
