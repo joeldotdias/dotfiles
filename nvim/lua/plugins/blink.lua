@@ -4,6 +4,9 @@ return {
     dependencies = {
         "L3MON4D3/LuaSnip",
     },
+
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
     opts = {
         keymap = {
             preset = "default",
@@ -49,8 +52,4 @@ return {
     },
 
     opts_extend = { "sources.default" },
-    config = function(_, opts)
-        require("blink.cmp").setup(opts)
-        vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities(nil, true) })
-    end,
 }
