@@ -60,7 +60,8 @@ return {
                 },
                 lualine_b = { "filename", "branch" },
                 lualine_c = {},
-                lualine_x = { "fileformat" },
+                -- lualine_x = { "fileformat" },
+                lualine_x = {},
                 lualine_y = { "filetype", "progress" },
                 lualine_z = {
                     { "location", left_padding = 2 },
