@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(
+        fd --type=file --base-directory="$HOME" --glob '*.pdf' |
+            fzf --margin 10%
+    )
+    [[ $selected ]] && selected="$HOME/$selected"
+fi
+
+[[ ! "$selected" ]] && exit 0
+
+session="books"
+
+if ! tmux has-session -t "$session" 2>/dev/null; then
+    tmux new-session -ds "$session" -c "$selected"
+fi
+
+tmux send-keys -t "$session" "zathura ${selected}" C-m
