@@ -21,6 +21,11 @@ build_nvim() {
     sudo make install
 }
 
+check_passed() {
+    local repo="neovim/neovim"
+    local sha="$1"
+}
+
 nvim_dir="$HOME/tools/neovim"
 
 if [ ! -d "$nvim_dir" ]; then
@@ -33,5 +38,3 @@ fi
     cd "$nvim_dir" || return
     build_nvim "$1"
 )
-
-nvim .

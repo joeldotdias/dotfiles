@@ -37,5 +37,5 @@ esac
 # starting hyprland on TTY1
 [[ $- != *i* ]] && return # exit if not interactive
 if [[ "$(tty)" == "/dev/tty1" ]]; then
-    exec Hyprland
+    exec start-hyprland
 fi

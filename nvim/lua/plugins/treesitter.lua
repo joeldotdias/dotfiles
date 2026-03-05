@@ -1,42 +1,55 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    branch = "main",
-    -- version = false,
     lazy = false,
     build = ":TSUpdate",
 
-    opts = {
-        ensure_installed = {
+    config = function()
+        local ts = require("nvim-treesitter")
+
+        local parsers = {
+            "c",
             "rust",
             "go",
             "ocaml",
-            "zig",
-            "c",
-            "lua",
             "bash",
-            "templ",
-            "zig",
-            "gleam",
             "typescript",
-            "tsx",
-            "jsdoc",
             "javascript",
-            "python",
+            "diff",
+            "html",
+            "lua",
+            "luadoc",
             "markdown",
+            "markdown_inline",
+            "query",
             "vim",
             "vimdoc",
-            "query",
-            "sql",
             "hyprlang",
+            "sql",
             "toml",
             "yaml",
             "json",
-        },
+            "python",
+        }
 
-        sync_install = false,
-        auto_install = true,
+        ts.install(parsers)
 
-        indent = { enable = true },
-        highlight = { enable = true },
-    },
+        vim.api.nvim_create_autocmd("FileType", {
+            callback = function(args)
+                local buf, filetype = args.buf, args.match
+
+                local language = vim.treesitter.language.get_lang(filetype)
+                if not language then
+                    return
+                end
+
+                if not vim.treesitter.language.add(language) then
+                    return
+                end
+
+                vim.treesitter.start(buf, language)
+
+                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            end,
+        })
+    end,
 }
