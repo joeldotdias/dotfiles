@@ -33,7 +33,7 @@ local function on_attach(client, bufnr)
         end)
     end
 
-    vim.lsp.document_color.enable(true, bufnr, { style = "virtual" })
+    vim.lsp.document_color.enable(true, { bufnr = bufnr }, { style = "virtual" })
     if client:supports_method("textDocument/documentColor") then
         lsp_key("grc", vim.lsp.document_color.color_presentation)
     end

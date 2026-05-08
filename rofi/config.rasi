@@ -4,9 +4,9 @@ configuration{
     show-icons: true;
     terminal: "alacritty";
     drun-display-format: "{icon} {name}";
-    display-run: "Run: ";
-    display-window: "Windows: ";
-    display-drun: "Apps: ";
+    display-run: " Run ";
+    display-window: " Windows ";
+    display-drun: " Apps ";
     font: "JetBrainsMono Nerd Font Medium 10";
     sidebar-mode: true;
 }

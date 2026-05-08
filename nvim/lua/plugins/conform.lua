@@ -2,9 +2,7 @@ return {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
-        local conform = require("conform")
-
-        conform.setup({
+        require("conform").setup({
             formatters_by_ft = {
                 rust = { "rustfmt", lsp_format = "fallback" },
                 go = { "gofmt" },
@@ -19,17 +17,21 @@ return {
                 python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
                 sh = { "shfmt" },
             },
+            format_on_save = {
+                timeout_ms = 500,
+                lsp_format = "fallback",
+            },
         })
 
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            callback = function(args)
-                conform.format({
-                    bufnr = args.buf,
-                    lsp_fallback = true,
-                    timeout_ms = 500,
-                    quiet = true,
-                })
-            end,
-        })
+        -- vim.api.nvim_create_autocmd("BufWritePre", {
+        --     callback = function(args)
+        --         conform.format({
+        --             bufnr = args.buf,
+        --             lsp_fallback = true,
+        --             timeout_ms = 500,
+        --             quiet = true,
+        --         })
+        --     end,
+        -- })
     end,
 }
