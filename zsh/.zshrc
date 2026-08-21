@@ -67,3 +67,12 @@ alias ls="ls -C -A --color=auto"
 
 
 eval "$(/home/jdot/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/jdot/.local/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jdot/.local/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/jdot/.local/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jdot/.local/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"

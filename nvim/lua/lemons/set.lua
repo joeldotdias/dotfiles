@@ -34,6 +34,3 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.g.skip_ts_context_commentstring_module = true
-
----@diagnostic disable-next-line: duplicate-set-field
-vim.deprecate = function() end

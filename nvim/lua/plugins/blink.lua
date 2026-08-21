@@ -4,22 +4,16 @@ return {
         "saghen/blink.lib",
         "L3MON4D3/LuaSnip",
     },
-    build = "cargo build --release",
-    -- build = function()
-    --     require("blink.cmp").build():wait(60000)
-    -- end,
+    build = function()
+        -- require("blink.cmp").build():wait(60000)
+        require("blink.cmp").build():pwait()
+    end,
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
         keymap = {
-            preset = "default",
-            ["<CR>"] = { "select_and_accept", "fallback" },
-            ["<C-\\>"] = { "hide", "fallback" },
-            ["<C-p>"] = { "select_prev", "fallback" },
-            ["<C-n>"] = { "select_next", "fallback" },
-            ["<C-b>"] = { "scroll_documentation_down", "fallback" },
-            ["<C-f>"] = { "scroll_documentation_up", "fallback" },
+            preset = "enter",
             ["<Tab>"] = {},
             ["<S-Tab>"] = {},
         },
