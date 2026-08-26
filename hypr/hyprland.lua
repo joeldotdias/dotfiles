@@ -29,6 +29,7 @@ hl.on("hyprland.start", function()
 		"hypridle",
 		"swaync",
 		"systemctl --user start hyprpolkitagent",
+		"hyprsunset",
 	}
 
 	for _, cmd in ipairs(cmdeez) do
